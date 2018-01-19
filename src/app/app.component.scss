@@ -1,0 +1,15 @@
+@import "mixins";
+
+app-sidebar {
+  @include size(20%, 100%);
+  @include absolute(0, null, null, 0);
+
+  @media screen and (max-width: 15cm) {
+    @include size100p;
+    @include absolute-center;
+  }
+}
+
+app-total-amount {
+
+}

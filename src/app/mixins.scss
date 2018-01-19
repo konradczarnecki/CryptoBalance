@@ -1,0 +1,113 @@
+@import '../st/elevation/mdc-elevation';
+
+$font: 'Arimo';
+$url: 'https://fonts.googleapis.com/css?family=' + $font;
+@import url($url);
+$font-clr: rgba(41, 41, 41, 0.74);
+$font-clr: rgba(77, 104, 169, 0.81);
+$hover-clr: rgba(96, 149, 237, 0.47);
+
+@mixin grid-rows($rows, $gap: 0){
+  display: grid;
+  grid-template-rows: $rows;
+  grid-row-gap: $gap;
+}
+
+@mixin grid-columns($columns, $gap: 0){
+  display: grid;
+  grid-template-columns: $columns;
+  grid-column-gap: $gap;
+}
+
+@mixin grid($rows, $columns, $gap: 0){
+  @include grid-rows($rows, $gap);
+  @include grid-columns($columns, $gap);
+}
+
+@mixin grid-pos($row-line: null, $column-line: null){
+  grid-row: $row-line;
+  grid-column: $column-line;
+}
+
+@mixin grid-format($format, $rows: null, $columns: null, $gap: 0){
+  display: grid;
+
+  @if $columns != null {
+    @include grid-columns($columns, $gap);
+    justify-items: $format;
+  }
+  @if $rows != null {
+    @include grid-rows($rows, $gap);
+    align-items: $format;
+  }
+  @if $rows == null and $columns == null {
+    align-items: $format;
+    justify-items: $format;
+  }
+}
+
+@mixin grid-stretch($rows: null, $columns: null, $gap: 0){
+  @include grid-format(stretch, $rows, $columns, $gap);
+}
+
+@mixin grid-center($rows: null, $columns: null, $gap: 0){
+  @include grid-format(center, $rows, $columns, $gap);
+}
+
+@mixin self-center($justify: true, $align: true){
+  @if $justify {
+    justify-self: center;
+  }
+  @if $align {
+    align-self: center;
+  }
+}
+
+@mixin self-stretch($justify: true, $align: true){
+  @if $justify {
+    justify-self: stretch;
+  }
+  @if $align {
+    align-self: stretch;
+  }
+}
+
+@mixin size($dim1, $dim2: -1){
+  @if $dim2 == -1 {
+    width: $dim1;
+    height: $dim1;
+  }
+  @else {
+    width: $dim1;
+    height: $dim2;
+  }
+}
+
+@mixin size100p(){
+  @include size(100%, 100%);
+}
+
+@mixin absolute($top, $right, $bottom, $left){
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin absolute-center(){
+  @include absolute(0, 0, 0, 0);
+  margin: auto;
+}
+
+@mixin pick-up($width, $height, $pickup: 2px){
+  width: $width + $pickup;
+  height: $height + $pickup;
+  transform: translateY( -$pickup / 2);
+}
+
+@mixin border($width: 1px, $color: #000000){
+  border: solid $width $color;
+}
+
+
