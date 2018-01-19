@@ -1,9 +1,9 @@
-import {Coin, Timewindow} from '../model';
+import {Coin} from '../model';
 
 export interface AppState {
 
   coins: Coin[];
   sidebarExpanded: boolean;
   currency: string;
-  timewindow: Timewindow;
+  timewindow: string;
 }

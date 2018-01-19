@@ -1,13 +1,16 @@
-import {Coin, Timewindow} from '../model';
+import {Coin} from '../model';
 import {
-  CHANGE_AMOUNT, CHANGE_TIMEWINDOW, ChangeAmountAction, ChangeCurrencyAction, ChangeTimewindowAction, CoinAction, HIDE_COIN, HIDE_SIDEBAR,
+  CHANGE_AMOUNT, CHANGE_CURRENCY, CHANGE_TIMEWINDOW, ChangeAmountAction, ChangeCurrencyAction, ChangeTimewindowAction, CoinAction,
+  HIDE_COIN, HIDE_SIDEBAR,
   SET_COINS,
   SHOW_COIN,
-  SHOW_SIDEBAR
+  TOGGLE_SIDEBAR
 } from './actions';
 import {Action} from '@ngrx/store';
 
-export function coinReducer(state: Coin[], action: CoinAction) {
+export function coinReducer(state: Coin[] = [], action: CoinAction) {
+
+  let newState: Coin[];
 
   switch (action.type) {
 
@@ -15,12 +18,12 @@ export function coinReducer(state: Coin[], action: CoinAction) {
       return action.payload;
 
     case SHOW_COIN:
-      const newState = state.slice(0);
+      newState = state.slice(0);
       newState.find(coin => coin.symbol === action.payload).shown = true;
       return newState;
 
     case HIDE_COIN:
-      const newState = state.slice(0);
+      newState = state.slice(0);
       newState.find(coin => coin.symbol === action.payload).shown = false;
       return newState;
 
@@ -29,7 +32,7 @@ export function coinReducer(state: Coin[], action: CoinAction) {
       const coinSymbol = changeAmountAction.payload.coin;
       const amount = changeAmountAction.payload.amount;
 
-      const newState = state.slice(0);
+      newState = state.slice(0);
       newState.find(coin => coin.symbol === coinSymbol).amount = amount;
       return newState;
 
@@ -38,26 +41,23 @@ export function coinReducer(state: Coin[], action: CoinAction) {
   }
 }
 
-export function sidebarReducer(state: boolean, action: Action) {
+export function sidebarReducer(state: boolean = true, action: Action) {
 
   switch (action.type) {
 
-    case SHOW_SIDEBAR:
-      return true;
-
-    case HIDE_SIDEBAR:
-      return false;
+    case TOGGLE_SIDEBAR:
+      return !state;
 
     default:
       return state;
   }
 }
 
-export function currencyReducer(state: string, action: ChangeCurrencyAction) {
+export function currencyReducer(state: string = 'usd', action: ChangeCurrencyAction) {
 
   switch(action.type) {
 
-    case CHANGE_AMOUNT:
+    case CHANGE_CURRENCY:
       return action.payload;
 
     default:
@@ -65,7 +65,7 @@ export function currencyReducer(state: string, action: ChangeCurrencyAction) {
   }
 }
 
-export function timewindowReducer(state: Timewindow, action: ChangeTimewindowAction) {
+export function timewindowReducer(state: string = '24h', action: ChangeTimewindowAction) {
 
   switch (action.type) {
 

@@ -1,3 +1,63 @@
-<p>
-  sidebar works!
-</p>
+<div class="wrapper">
+  <div id="innerWrapper">
+
+    <div id="menu">
+      <div id="currency">
+
+        <label for="usdRadio">
+          <input type="radio" id="usdRadio" name="currency" [value]="'usd'" [(ngModel)]="currency"/>USD
+        </label>
+
+        <label for="usdRadio">
+          <input type="radio" id="plnRadio" name="currency" [value]="'pln'" [(ngModel)]="currency"/>PLN
+        </label>
+
+        <label for="usdRadio">
+          <input type="radio" id="btcRadio" name="currency" [value]="'btc'" [(ngModel)]="currency"/>BTC
+        </label>
+
+      </div>
+      <div id="timewindow">
+
+        <label for="timewindow1h">
+          <input type="radio" id="timewindow1h" name="timewindow" [value]="'1h'" [(ngModel)]="timewindow"/>1h
+        </label>
+
+        <label for="timewindow24h">
+          <input type="radio" id="timewindow24h" name="timewindow" [value]="'24h'" [(ngModel)]="timewindow"/>24h
+        </label>
+
+        <label for="timewindow7d">
+          <input type="radio" id="timewindow7d" name="timewindow" [value]="'7d'" [(ngModel)]="timewindow"/>7d
+        </label>
+      </div>
+    </div>
+
+    <ng-container class="row" *ngFor="let coin of coins">
+
+      <div class="rowContent">
+
+        <img [src]="'https://files.coinmarketcap.com/static/img/coins/32x32/' + coin.id + '.png'"/>
+
+        <span id="coinName">
+          {{coin.name | slice:0:14}}
+        </span>
+
+        <span id="coinPrice">
+          {{coin['price_' + currency] | coinPrice}} {{currency.toUpperCase()}}
+        </span>
+
+        <span id="percentChange"
+              [ngClass]="{
+              'red' : belowZeroPercent(coin['percent_change_' + timewindow]),
+              'green' : !belowZeroPercent(coin['percent_change_' + timewindow])}">
+
+          {{coin['percent_change_' + timewindow]}} %
+        </span>
+
+      </div>
+
+    </ng-container>
+
+  </div>
+</div>

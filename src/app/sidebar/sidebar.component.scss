@@ -1,0 +1,73 @@
+@import '../mixins';
+
+$row-height: 40px;
+
+.wrapper {
+  @include size100p;
+  overflow-x: hidden;
+  background: white;
+  font-size: 14px;
+  border-radius: 2px;
+}
+
+#innerWrapper {
+  @include size(103%, 100%);
+  @include grid-format(stretch, 50px);
+  grid-auto-rows: $row-height;
+  grid-row-gap: 10px;
+  margin-right: -15px;
+  overflow-y: scroll;
+
+  font-family: $font;
+  color: $font-clr;
+}
+
+.row {
+  @include size100p;
+}
+
+.rowContent {
+  @include size(90%, $row-height);
+  @include grid-center(1fr, 12% 45% 27% 17%);
+  @include mdc-elevation(1);
+  justify-items: left;
+  margin: auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+
+  $img-size: 0.6;
+
+  img {
+    @include size($row-height * $img-size);
+  }
+
+  #coinPrice {
+    justify-self: right;
+  }
+
+  #percentChange {
+    font-size: 12px;
+    justify-self: right;
+  }
+}
+
+#menu {
+  @include grid-center(1fr, 1fr 1fr);
+  align-self: center;
+  font-size: 14px;
+}
+
+#currency, #timewindow {
+  @include grid-center(1fr, 1fr 1fr 1fr);
+  grid-column-gap: 5px;
+}
+
+.red {
+  color: #c53b49;
+}
+
+.green {
+  color: #4b954b;
+}
+
+

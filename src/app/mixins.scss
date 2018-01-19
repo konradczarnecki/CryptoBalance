@@ -1,10 +1,9 @@
-@import '../st/elevation/mdc-elevation';
+@import "../styles/material/elevation/mdc-elevation";
 
-$font: 'Arimo';
-$url: 'https://fonts.googleapis.com/css?family=' + $font;
+$font: 'Open Sans';
+$url: 'https://fonts.googleapis.com/css?family=Open+Sans';
 @import url($url);
 $font-clr: rgba(41, 41, 41, 0.74);
-$font-clr: rgba(77, 104, 169, 0.81);
 $hover-clr: rgba(96, 149, 237, 0.47);
 
 @mixin grid-rows($rows, $gap: 0){

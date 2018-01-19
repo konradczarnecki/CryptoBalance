@@ -1,8 +1,21 @@
-<app-sidebar></app-sidebar>
-<div id="mainView">
-  <app-total-amount></app-total-amount>
-  <div id="coinInfos">
-    <app-coin-info *ngFor="let coin of shownCoins"></app-coin-info>
+<div class="wrapper">
+
+  <app-sidebar [@sidebarAnimation]="sidebar | async"></app-sidebar>
+
+  <div id="mainView" [@mainViewAnimation]="sidebar | async">
+
+    <div id="sidebarToggleButton"
+         (click)="toggleSidebar()"
+         [ngStyle]="{transform : arrowRotation | async }">&#8250;</div>
+
+    <app-total-amount></app-total-amount>
+
+    <div id="coinInfos">
+      <app-coin-info *ngFor="let coin of shownCoins | async"></app-coin-info>
+    </div>
+
   </div>
+
 </div>
+
 

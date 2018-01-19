@@ -12,7 +12,3 @@ export interface Coin {
   amount: number;
   shown: boolean;
 }
-
-export enum Timewindow {
-  _1h, _24h, _7d
-}
