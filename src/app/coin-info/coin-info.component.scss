@@ -1,0 +1,46 @@
+@import "../common";
+
+$tile-w: 180px;
+$tile-h: 160px;
+
+.wrapper {
+  @include size($tile-w, $tile-h);
+  @include grid-center(50% 20% 25%, 1fr);
+  grid-template-areas: "top" "middle" "bottom";
+  font-family: 'Open Sans';
+  font-size: 25px;
+  color: $font-clr;
+}
+
+input {
+  @include size(25%, 30px);
+  text-align: right;
+  border: none;
+  font-size: 25px;
+  color: $font-clr;
+  background: transparent;
+}
+
+#coinValue {
+  grid-area: top;
+  z-index: 3;
+
+  div {
+    margin: auto;
+    text-align: center;
+  }
+}
+img {
+  grid-area: top;
+  @include size($tile-w * 0.4);
+  opacity: 0.3;
+}
+
+#name {
+  grid-area: middle;
+}
+
+#exchange {
+  grid-area: bottom;
+  font-size: 15px;
+}

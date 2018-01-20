@@ -1,9 +1,8 @@
 import {Coin} from '../model';
 import {
   CHANGE_AMOUNT, CHANGE_CURRENCY, CHANGE_TIMEWINDOW, ChangeAmountAction, ChangeCurrencyAction, ChangeTimewindowAction, CoinAction,
-  HIDE_COIN, HIDE_SIDEBAR,
+  TOGGLE_COIN, HIDE_SIDEBAR,
   SET_COINS,
-  SHOW_COIN,
   TOGGLE_SIDEBAR
 } from './actions';
 import {Action} from '@ngrx/store';
@@ -15,16 +14,19 @@ export function coinReducer(state: Coin[] = [], action: CoinAction) {
   switch (action.type) {
 
     case SET_COINS:
-      return action.payload;
+      newState = action.payload;
 
-    case SHOW_COIN:
-      newState = state.slice(0);
-      newState.find(coin => coin.symbol === action.payload).shown = true;
+      state.filter(coin => coin.shown).forEach(coin => {
+        let newCoin = newState.find(newCoin => newCoin.symbol === coin.symbol);
+        newCoin.shown = true;
+        newCoin.amount = coin.amount;
+      });
       return newState;
 
-    case HIDE_COIN:
+    case TOGGLE_COIN:
       newState = state.slice(0);
-      newState.find(coin => coin.symbol === action.payload).shown = false;
+      let coin = newState.find(coin => coin.symbol === action.payload);
+      coin.shown = !coin.shown;
       return newState;
 
     case CHANGE_AMOUNT:

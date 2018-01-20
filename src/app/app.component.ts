@@ -19,15 +19,14 @@ import {ToggleSidebarAction} from './redux/actions';
 })
 export class AppComponent {
 
-  shownCoins: Observable<Coin>;
+  shownCoins: Observable<Coin[]>;
   sidebar: Observable<string>;
   arrowRotation: Observable<string>;
 
   constructor(private store: Store<AppState>, private fetchService: FetchService) {
 
     this.shownCoins = store.select('coins')
-      .flatMap(coins => Observable.from(coins))
-      .filter(coin => coin.shown);
+      .map(coins => coins.filter(coin => coin.shown));
 
     this.sidebar = store.select('sidebarExpanded').map(expanded => {
 
@@ -37,9 +36,6 @@ export class AppComponent {
     });
 
     this.arrowRotation = this.sidebar.map(sidebar => this.arrowRotationFromState(sidebar));
-
-    this.fetchService.fetchCoinInfos();
-    setInterval(this.fetchService.fetchCoinInfos, 30000);
   }
 
   toggleSidebar() {
@@ -61,8 +57,8 @@ export class AppComponent {
     return 'rotate(' + rotation + 'deg)';
   }
 
-  @HostListener('window:resize', ['$event'])
-  sizeCheck(event) {
+  @HostListener('window:resize')
+  sizeCheck() {
 
     if(window.matchMedia('screen and (max-width: 15cm)').matches)
       this.store.dispatch(new ToggleSidebarAction());

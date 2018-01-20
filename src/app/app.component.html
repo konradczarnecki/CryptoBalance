@@ -4,14 +4,16 @@
 
   <div id="mainView" [@mainViewAnimation]="sidebar | async">
 
-    <div id="sidebarToggleButton"
-         (click)="toggleSidebar()"
-         [ngStyle]="{transform : arrowRotation | async }">&#8250;</div>
-
     <app-total-amount></app-total-amount>
 
     <div id="coinInfos">
-      <app-coin-info *ngFor="let coin of shownCoins | async"></app-coin-info>
+      <app-coin-info *ngFor="let coin of shownCoins | async" [coin]="coin"></app-coin-info>
+    </div>
+
+    <div id="sidebarToggleButton"
+         (click)="toggleSidebar()"
+         [ngStyle]="{transform : arrowRotation | async }">
+      &#8250;
     </div>
 
   </div>

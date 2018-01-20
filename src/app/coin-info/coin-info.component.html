@@ -1,3 +1,11 @@
-<p>
-  coin-info works!
-</p>
+<div class="wrapper">
+
+  <div id="coinValue">
+    <div><input type="text" id="amount" [(ngModel)]="amount"/> {{coin.symbol}}</div>
+    <div>{{coinValue | coinPrice}} {{currency.toUpperCase()}}</div>
+  </div>
+
+  <img [src]="'https://files.coinmarketcap.com/static/img/coins/32x32/' + coin.id + '.png'"/>
+  <div id="name">{{coin.name}}</div>
+  <div id="exchange">{{coin['price_' + currency] | coinPrice}} {{currency.toUpperCase()}} / {{coin.symbol}}</div>
+</div>

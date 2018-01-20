@@ -4,7 +4,7 @@ import {Store} from '@ngrx/store';
 import {Coin} from '../model';
 
 import {Observable} from 'rxjs/Observable';
-import {ChangeCurrencyAction, ChangeTimewindowAction} from '../redux/actions';
+import {ChangeCurrencyAction, ChangeTimewindowAction, ToggleCoinAction} from '../redux/actions';
 
 
 @Component({
@@ -14,13 +14,13 @@ import {ChangeCurrencyAction, ChangeTimewindowAction} from '../redux/actions';
 })
 export class SidebarComponent implements OnInit {
 
-  coins: Coin[];
+  coins: Observable<Coin[]>;
   _currency: string;
   _timewindow: string;
 
   constructor(private store: Store<AppState>) {
 
-    store.select('coins').subscribe(coins => this.coins = coins);
+    this.coins = store.select('coins');
     store.select('currency').subscribe(currency => this._currency = currency);
     store.select('timewindow').subscribe(timewindow => this._timewindow = timewindow);
   }
@@ -41,10 +41,9 @@ export class SidebarComponent implements OnInit {
     return this._timewindow;
   }
 
-  belowZeroPercent(valueString: string) {
+  toggleCoin(id: string) {
 
-    let value = Number(valueString);
-    return value < 0;
+    this.store.dispatch(new ToggleCoinAction(id));
   }
 
   ngOnInit() {

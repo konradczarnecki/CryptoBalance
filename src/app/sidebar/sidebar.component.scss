@@ -1,18 +1,18 @@
-@import '../mixins';
+@import '../common';
 
 $row-height: 40px;
 
 .wrapper {
   @include size100p;
   overflow-x: hidden;
+  border-radius: 2px;
   background: white;
   font-size: 14px;
-  border-radius: 2px;
 }
 
 #innerWrapper {
   @include size(103%, 100%);
-  @include grid-format(stretch, 50px);
+  @include grid-format(stretch, 10px 40px);
   grid-auto-rows: $row-height;
   grid-row-gap: 10px;
   margin-right: -15px;
@@ -28,14 +28,14 @@ $row-height: 40px;
 
 .rowContent {
   @include size(90%, $row-height);
-  @include grid-center(1fr, 12% 45% 27% 17%);
-  @include mdc-elevation(1);
+  @include grid-center(1fr, 11% 40% 26% 17% 5%);
+  @include mdc-elevation(2);
   justify-items: left;
   margin: auto;
-  padding: 0 15px;
+  padding-left: 15px;
   box-sizing: border-box;
 
-  $img-size: 0.6;
+  $img-size: 0.5;
 
   img {
     @include size($row-height * $img-size);
@@ -51,6 +51,22 @@ $row-height: 40px;
   }
 }
 
+.rowContent:hover {
+  cursor: pointer;
+}
+
+.rowContent:hover:not(.marked) {
+  background: $hover-clr;
+}
+
+.rowContent:active {
+  @include mdc-elevation(1);
+}
+
+.marked {
+  background-color: $marked-clr;
+}
+
 #menu {
   @include grid-center(1fr, 1fr 1fr);
   align-self: center;
@@ -63,11 +79,11 @@ $row-height: 40px;
 }
 
 .red {
-  color: #c53b49;
+  color: $red;
 }
 
 .green {
-  color: #4b954b;
+  color: $green;
 }
 
 

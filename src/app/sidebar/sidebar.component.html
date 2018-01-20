@@ -1,22 +1,26 @@
 <div class="wrapper">
   <div id="innerWrapper">
 
+    <div class="filler"></div>
+
     <div id="menu">
+
       <div id="currency">
 
         <label for="usdRadio">
           <input type="radio" id="usdRadio" name="currency" [value]="'usd'" [(ngModel)]="currency"/>USD
         </label>
 
-        <label for="usdRadio">
+        <label for="plnRadio">
           <input type="radio" id="plnRadio" name="currency" [value]="'pln'" [(ngModel)]="currency"/>PLN
         </label>
 
-        <label for="usdRadio">
+        <label for="btcRadio">
           <input type="radio" id="btcRadio" name="currency" [value]="'btc'" [(ngModel)]="currency"/>BTC
         </label>
 
       </div>
+
       <div id="timewindow">
 
         <label for="timewindow1h">
@@ -33,9 +37,11 @@
       </div>
     </div>
 
-    <ng-container class="row" *ngFor="let coin of coins">
+    <ng-container class="row" *ngFor="let coin of coins | async">
 
-      <div class="rowContent">
+      <div class="rowContent"
+           [ngClass]="{'marked' : coin.shown}"
+           (click)="toggleCoin(coin.symbol)">
 
         <img [src]="'https://files.coinmarketcap.com/static/img/coins/32x32/' + coin.id + '.png'"/>
 
@@ -49,12 +55,13 @@
 
         <span id="percentChange"
               [ngClass]="{
-              'red' : belowZeroPercent(coin['percent_change_' + timewindow]),
-              'green' : !belowZeroPercent(coin['percent_change_' + timewindow])}">
+              'red' : coin['percent_change_' + timewindow].indexOf('-') != -1,
+              'green' : coin['percent_change_' + timewindow].indexOf('-') == -1}">
 
           {{coin['percent_change_' + timewindow]}} %
         </span>
 
+        <div class="filler"></div>
       </div>
 
     </ng-container>

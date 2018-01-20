@@ -2,8 +2,7 @@ import {Action} from '@ngrx/store';
 import {Coin} from '../model';
 
 export const SET_COINS = 'SET_COINS';
-export const SHOW_COIN = 'SHOW_COIN';
-export const HIDE_COIN = 'HIDE_COIN';
+export const TOGGLE_COIN = 'TOGGLE_COIN';
 export const CHANGE_AMOUNT = 'CHANGE_AMOUNT';
 export const CHANGE_CURRENCY = 'CHANGE_CURRENCY';
 export const CHANGE_TIMEWINDOW = 'CHANGE_TIMEWINDOW';
@@ -23,13 +22,8 @@ export class SetCoinsAction implements CoinAction {
   constructor(public payload: Coin[]) {}
 }
 
-export class ShowCoinAction implements CoinAction {
-  readonly type = SHOW_COIN;
-  constructor(public payload: string) {}
-}
-
-export class HideCoinAction implements CoinAction {
-  readonly type = HIDE_COIN;
+export class ToggleCoinAction implements CoinAction {
+  readonly type = TOGGLE_COIN;
   constructor(public payload: string) {}
 }
 

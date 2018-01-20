@@ -3,8 +3,12 @@
 $font: 'Open Sans';
 $url: 'https://fonts.googleapis.com/css?family=Open+Sans';
 @import url($url);
+
 $font-clr: rgba(41, 41, 41, 0.74);
-$hover-clr: rgba(96, 149, 237, 0.47);
+$hover-clr: rgba(239, 240, 246, 0.3);
+$marked-clr: rgba(225, 225, 235, 0.43);
+$green: #4b954b;
+$red: #c53b49;
 
 @mixin grid-rows($rows, $gap: 0){
   display: grid;
@@ -84,6 +88,10 @@ $hover-clr: rgba(96, 149, 237, 0.47);
 
 @mixin size100p(){
   @include size(100%, 100%);
+}
+
+@mixin size100v(){
+  @include size(100vw, 100vh);
 }
 
 @mixin absolute($top, $right, $bottom, $left){
