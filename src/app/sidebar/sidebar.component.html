@@ -41,7 +41,7 @@
 
       <div class="rowContent"
            [ngClass]="{'marked' : coin.shown}"
-           (click)="toggleCoin(coin.symbol)">
+           (click)="toggleCoin(coin.id)">
 
         <img [src]="'https://files.coinmarketcap.com/static/img/coins/32x32/' + coin.id + '.png'"/>
 

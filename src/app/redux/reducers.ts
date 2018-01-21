@@ -7,35 +7,40 @@ import {
 } from './actions';
 import {Action} from '@ngrx/store';
 
-export function coinReducer(state: Coin[] = [], action: CoinAction) {
+export function coinReducer(state: Coin[] = JSON.parse(localStorage.getItem('coins')), action: CoinAction) {
 
   let newState: Coin[];
+  if(!state) state = [];
 
   switch (action.type) {
 
     case SET_COINS:
-      newState = action.payload;
+      newState = <Coin[]> action.payload;
 
-      state.filter(coin => coin.shown).forEach(coin => {
-        let newCoin = newState.find(newCoin => newCoin.symbol === coin.symbol);
-        newCoin.shown = true;
-        newCoin.amount = coin.amount;
+      newState.forEach(newCoin => {
+        const oldCoin = state.find(coin => newCoin.id === coin.id);
+        if(oldCoin) newCoin.shown = oldCoin.shown;
+
+        if(!oldCoin || !oldCoin.amount || oldCoin.amount == 0) newCoin.amount = 0;
+        else newCoin.amount = oldCoin.amount;
       });
       return newState;
 
     case TOGGLE_COIN:
       newState = state.slice(0);
-      let coin = newState.find(coin => coin.symbol === action.payload);
+      let coin = newState.find(coin => coin.id === action.payload);
       coin.shown = !coin.shown;
+      localStorage.setItem('coins', JSON.stringify(newState));
       return newState;
 
     case CHANGE_AMOUNT:
       const changeAmountAction = <ChangeAmountAction> action;
-      const coinSymbol = changeAmountAction.payload.coin;
+      const coinId = changeAmountAction.payload.coin;
       const amount = changeAmountAction.payload.amount;
 
       newState = state.slice(0);
-      newState.find(coin => coin.symbol === coinSymbol).amount = amount;
+      newState.find(coin => coin.id === coinId).amount = amount;
+      localStorage.setItem('coins', JSON.stringify(newState));
       return newState;
 
     default:
@@ -43,11 +48,12 @@ export function coinReducer(state: Coin[] = [], action: CoinAction) {
   }
 }
 
-export function sidebarReducer(state: boolean = true, action: Action) {
+export function sidebarReducer(state: boolean = JSON.parse(localStorage.getItem('sidebar')), action: Action) {
 
   switch (action.type) {
 
     case TOGGLE_SIDEBAR:
+      localStorage.setItem('sidebar', JSON.stringify(!state));
       return !state;
 
     default:
@@ -55,11 +61,14 @@ export function sidebarReducer(state: boolean = true, action: Action) {
   }
 }
 
-export function currencyReducer(state: string = 'usd', action: ChangeCurrencyAction) {
+export function currencyReducer(state: string = JSON.parse(localStorage.getItem('currency')), action: ChangeCurrencyAction) {
+
+  if(!state) state = 'usd';
 
   switch(action.type) {
 
     case CHANGE_CURRENCY:
+      localStorage.setItem('currency', JSON.stringify(action.payload));
       return action.payload;
 
     default:
@@ -67,11 +76,14 @@ export function currencyReducer(state: string = 'usd', action: ChangeCurrencyAct
   }
 }
 
-export function timewindowReducer(state: string = '24h', action: ChangeTimewindowAction) {
+export function timewindowReducer(state: string = JSON.parse(localStorage.getItem('timewindow')), action: ChangeTimewindowAction) {
+
+  if(!state) state = '24h';
 
   switch (action.type) {
 
     case CHANGE_TIMEWINDOW:
+      localStorage.setItem('timewindow', JSON.stringify(action.payload));
       return action.payload;
 
     default:

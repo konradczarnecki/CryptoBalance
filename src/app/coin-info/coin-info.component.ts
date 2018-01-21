@@ -30,12 +30,7 @@ export class CoinInfoComponent implements OnInit {
     return this.coin.amount * this.coin['price_' + this.currency]
   }
 
-  get amount() {
-    return this.coin.amount;
+  setAmount(value: string) {
+    if(value) this.store.dispatch(new ChangeAmountAction({coin : this.coin.id, amount : Number(value)}));
   }
-
-  set amount(value) {
-    if(value) this.store.dispatch(new ChangeAmountAction(value));
-  }
-
 }

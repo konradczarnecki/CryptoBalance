@@ -8,7 +8,7 @@ $tile-h: 160px;
   @include grid-center(50% 20% 25%, 1fr);
   grid-template-areas: "top" "middle" "bottom";
   font-family: 'Open Sans';
-  font-size: 25px;
+  font-size: 22px;
   color: $font-clr;
 }
 
@@ -16,14 +16,16 @@ input {
   @include size(25%, 30px);
   text-align: right;
   border: none;
-  font-size: 25px;
+  font-size: 22px;
   color: $font-clr;
+  font-family: 'Open Sans';
+  padding-right: 10px;
   background: transparent;
 }
 
 #coinValue {
   grid-area: top;
-  z-index: 3;
+  z-index: 2;
 
   div {
     margin: auto;
