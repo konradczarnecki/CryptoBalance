@@ -8,8 +8,13 @@ export class CoinPricePipe implements PipeTransform {
   transform(value: number, args?: any): any {
 
     let numValue = Number(value);
-    if(value < 10) return numValue.toFixed(2);
-    else return Math.round(numValue);
+    let toReturn = String(numValue);
+
+    if(value < 0.1) toReturn = numValue.toFixed(4);
+    else if(value < 10) toReturn = numValue.toFixed(2);
+    else toReturn = String(Math.round(numValue));
+
+    return Number(toReturn).toLocaleString();
   }
 
 }

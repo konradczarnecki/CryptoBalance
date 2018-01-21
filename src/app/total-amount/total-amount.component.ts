@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {AppState} from '../redux/state';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/zip';
+import {Coin} from '../model';
 
 @Component({
   selector: 'app-total-amount',
@@ -7,9 +12,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TotalAmountComponent implements OnInit {
 
-  constructor() { }
+  total: Observable<number>;
+  currency: Observable<string>;
+
+  constructor(private store: Store<AppState>) {
+
+    this.currency = store.select('currency').map(currency => currency.toUpperCase());
+    this.total = <Observable<number>> Observable.zip(store.select('coins'), store.select('currency'),
+      (coins: Coin[], currency: string): number => {
+      return coins.map(coin => coin['price_' + currency] * coin.amount).reduce((sum, val) => sum + val);
+    });
+  }
 
   ngOnInit() {
   }
-
 }

@@ -5,7 +5,7 @@
     <div>
       <input type="text" id="amount"
                 [value]="coin.amount"
-                (input)="setAmount($event.target.value)"/>{{coin.symbol}}
+                (input)="setAmount($event.target.value)"/>{{coin.symbol}}  &#8776;
     </div>
 
     <div>{{coinValue | coinPrice}} {{currency.toUpperCase()}}</div>

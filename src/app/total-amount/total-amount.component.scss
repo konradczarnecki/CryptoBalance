@@ -1,0 +1,20 @@
+@import "../common";
+
+.wrapper {
+  @include grid-center(1fr, 1fr);
+}
+
+h1 {
+  font-family: $font2;
+  font-size: 65px;
+  font-weight: 700;
+  color: transparentize($font-clr, 0.1);
+
+  @media screen and (max-width: 30cm) {
+    font-size: 35px;
+  }
+
+  @media screen and (max-width: $mobile-treshhold) {
+    font-size: 45px;
+  }
+}

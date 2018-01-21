@@ -10,6 +10,7 @@ $tile-h: 160px;
   font-family: 'Open Sans';
   font-size: 22px;
   color: $font-clr;
+  cursor: default;
 }
 
 input {
@@ -21,6 +22,10 @@ input {
   font-family: 'Open Sans';
   padding-right: 10px;
   background: transparent;
+}
+
+input:hover {
+  cursor: pointer;
 }
 
 #coinValue {

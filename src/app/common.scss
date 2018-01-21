@@ -1,14 +1,19 @@
 @import "../styles/material/elevation/mdc-elevation";
 
 $font: 'Open Sans';
-$url: 'https://fonts.googleapis.com/css?family=Open+Sans';
-@import url($url);
+$font2: 'Muli';
+$url1: 'https://fonts.googleapis.com/css?family=Open+Sans';
+$url2: 'https://fonts.googleapis.com/css?family=Muli';
+@import url($url1);
+@import url($url2);
 
 $font-clr: rgba(41, 41, 41, 0.83);
 $hover-clr: rgba(239, 240, 246, 0.3);
 $marked-clr: rgba(225, 225, 235, 0.43);
 $green: #4b954b;
 $red: #c53b49;
+
+$mobile-treshhold: 18cm;
 
 @mixin grid-rows($rows, $gap: 0){
   display: grid;

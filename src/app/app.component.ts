@@ -30,7 +30,7 @@ export class AppComponent {
 
     this.sidebar = store.select('sidebarExpanded').map(expanded => {
 
-      const deviceSuffix = window.matchMedia('screen and (max-width: 15cm)').matches ? 'Mobile' : 'Desktop';
+      const deviceSuffix = window.matchMedia('screen and (max-width: 18cm)').matches ? 'Mobile' : 'Desktop';
       const shown = expanded ? 'shown' : 'hidden';
       return shown + deviceSuffix;
     });
