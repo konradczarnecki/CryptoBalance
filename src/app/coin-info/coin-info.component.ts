@@ -26,7 +26,6 @@ export class CoinInfoComponent implements OnInit {
   get coinValue(): number {
 
     if(!this.coin.amount) return 0;
-
     return this.coin.amount * this.coin['price_' + this.currency]
   }
 

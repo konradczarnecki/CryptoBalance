@@ -7,10 +7,9 @@ import {
 } from './actions';
 import {Action} from '@ngrx/store';
 
-export function coinReducer(state: Coin[] = JSON.parse(localStorage.getItem('coins')), action: CoinAction) {
+export function coinReducer(state: Coin[] = initCoins(), action: CoinAction) {
 
   let newState: Coin[];
-  if(!state) state = [];
 
   switch (action.type) {
 
@@ -48,7 +47,7 @@ export function coinReducer(state: Coin[] = JSON.parse(localStorage.getItem('coi
   }
 }
 
-export function sidebarReducer(state: boolean = JSON.parse(localStorage.getItem('sidebar')), action: Action) {
+export function sidebarReducer(state: boolean = initSidebar(), action: Action) {
 
   switch (action.type) {
 
@@ -61,9 +60,7 @@ export function sidebarReducer(state: boolean = JSON.parse(localStorage.getItem(
   }
 }
 
-export function currencyReducer(state: string = JSON.parse(localStorage.getItem('currency')), action: ChangeCurrencyAction) {
-
-  if(!state) state = 'usd';
+export function currencyReducer(state: string = initCurrency(), action: ChangeCurrencyAction) {
 
   switch(action.type) {
 
@@ -76,9 +73,7 @@ export function currencyReducer(state: string = JSON.parse(localStorage.getItem(
   }
 }
 
-export function timewindowReducer(state: string = JSON.parse(localStorage.getItem('timewindow')), action: ChangeTimewindowAction) {
-
-  if(!state) state = '24h';
+export function timewindowReducer(state: string = initTimewindow(), action: ChangeTimewindowAction) {
 
   switch (action.type) {
 
@@ -97,3 +92,27 @@ export const rootReducer = {
   currency : currencyReducer,
   timewindow : timewindowReducer
 };
+
+function initCoins(): Coin[] {
+  let coins = JSON.parse(localStorage.getItem('coins'));
+  if(!coins) coins = [];
+  return coins;
+}
+
+function initSidebar(): boolean {
+  let sidebarOpen = JSON.parse(localStorage.getItem('sidebar'));
+  if(sidebarOpen == null) sidebarOpen = true;
+  return sidebarOpen;
+}
+
+function initCurrency(): string {
+  let currency = JSON.parse(localStorage.getItem('currency'));
+  if(!currency) currency = 'usd';
+  return currency;
+}
+
+function initTimewindow(): string {
+  let timewindow = JSON.parse(localStorage.getItem('timewindow'));
+  if(!timewindow) timewindow = '24h';
+  return timewindow;
+}
