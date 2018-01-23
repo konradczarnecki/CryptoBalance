@@ -5,7 +5,7 @@
     <div>
       <input type="text" id="amount"
              [value]="coin.amount"
-             (click)="$event.target.select()"
+             (click)="$event.target.value = ''"
              (input)="setAmount($event.target.value)"/>{{coin.symbol}}  &#8776;
     </div>
 

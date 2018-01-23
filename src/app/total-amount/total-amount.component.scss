@@ -8,6 +8,10 @@ $viewicon-size: 60px;
 
 #innerWrapper {
   transform: translateX($viewicon-size / 2);
+
+  @media screen and (max-width: 20cm) {
+    transform: translateX($viewicon-size / 5);
+  }
 }
 
 h1 {
@@ -23,10 +27,15 @@ h1 {
 }
 
 #transparencyToggleButton {
-  @include size(60px);
+  @include size($viewicon-size);
   opacity: 0.4;
   display: inline-block;
   margin-left: 40px;
+
+  @media screen and (max-width: $mobile-treshhold) {
+    @include size($viewicon-size / 2.5);
+    margin-left: 15px;
+  }
 }
 
 #transparencyToggleButton:hover {

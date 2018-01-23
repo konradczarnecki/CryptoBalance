@@ -21,20 +21,21 @@ app-sidebar {
   z-index: 3;
 
   @media screen and (max-width: $mobile-treshhold) {
-    width: 95vw;
+    width: 94vw;
     margin-top: 25px;
     grid-area: whole;
   }
 }
 
 #mainView {
-  @include grid-stretch(2% 17% 1fr, 1fr);
+  @include grid-stretch(20% 1fr, 1fr);
   height: 100vh;
   justify-self: stretch;
   position: relative;
 
   @media screen and (max-width: $mobile-treshhold) {
     grid-area: whole;
+    position: static;
   }
 }
 
@@ -48,8 +49,8 @@ app-sidebar {
   transform-origin: 50%;
 
   @media screen and (max-width: $mobile-treshhold) {
-    @include absolute(90vh, 0, null, 0);
-    margin: auto;
+    @include size(35px);
+    @include absolute(5px, null, null, 10px);
   }
 }
 

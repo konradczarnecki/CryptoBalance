@@ -14,7 +14,7 @@ export class CoinPricePipe implements PipeTransform {
     else if(value < 10) toReturn = numValue.toFixed(2);
     else toReturn = String(Math.round(numValue));
 
-    return Number(toReturn).toLocaleString().replace(',' ,' ');
+    return Number(toReturn).toLocaleString('en').replace(',' ,' ');
   }
 
 }

@@ -13,10 +13,10 @@ apply plugin: 'idea'
 group 'konra'
 version '0.2'
 
-task buildAngular(type: Exec) {
+task buildApp(type: Exec) {
   group 'app'
   workingDir = projectDir
-  commandLine = ['cmd', '/c', 'ng', 'build']
+  commandLine = ['cmd', '/c', 'ng', 'build', '--prod']
   inputs.files fileTree('src')
   outputs.dir 'dist'
 }
@@ -24,20 +24,25 @@ task buildAngular(type: Exec) {
 task pack(type: Zip) {
   group 'app'
   from 'dist/'
-  include '*'
+  include '*', '**/*'
   archiveName project.property('bundle.name').toString()
   destinationDir file("${projectDir}/bundle")
   inputs.files fileTree('dist')
   outputs.dir file("${projectDir}/bundle")
 
-  dependsOn buildAngular
+  dependsOn buildApp
+}
+
+task clean(type: Delete) {
+  group 'app'
+  delete file('bundle'), file('dist');
 }
 
 remotes {
   droplet {
     host = '138.197.178.123'
     user = 'root'
-//    identity = file(project.property('key.path'))
+    identity = file(project.property('key.path'))
   }
 }
 
