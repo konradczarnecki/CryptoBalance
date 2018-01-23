@@ -3,7 +3,7 @@
 
 $font-url: 'https://fonts.googleapis.com/css?family=';
 $font: 'Maven Pro'; //Comfortaa,
-$font2: 'Maven Pro';
+$font2: 'Julius Sans One'; //Julius Sans One
 $url1: $font-url + str-replace($font, ' ', '+');
 $url2: $font-url + str-replace($font2, ' ', '+');
 @import url($url1);
@@ -15,7 +15,7 @@ $marked-clr: rgba(225, 225, 235, 0.43);
 $green: #4b954b;
 $red: #c53b49;
 
-$mobile-treshhold: 18cm;
+$mobile-treshhold: 20cm; // remember to change also in AppComponent
 
 @mixin grid-rows($rows, $gap: 0){
   display: grid;

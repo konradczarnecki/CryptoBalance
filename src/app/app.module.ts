@@ -11,7 +11,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {FetchService} from './service/fetch.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CoinPricePipe } from './service/coin-price.pipe';
-import { NameLengthPipe } from './service/name-length.pipe';
 import {FormsModule} from '@angular/forms';
 
 
@@ -21,8 +20,7 @@ import {FormsModule} from '@angular/forms';
     TotalAmountComponent,
     SidebarComponent,
     CoinInfoComponent,
-    CoinPricePipe,
-    NameLengthPipe
+    CoinPricePipe
   ],
   imports: [
     BrowserModule,
@@ -31,7 +29,7 @@ import {FormsModule} from '@angular/forms';
     BrowserAnimationsModule,
     StoreModule.forRoot(rootReducer)
   ],
-  providers: [FetchService],
+  providers: [FetchService, CoinPricePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

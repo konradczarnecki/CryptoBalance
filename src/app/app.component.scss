@@ -28,7 +28,7 @@ app-sidebar {
 }
 
 #mainView {
-  @include grid-stretch(2% 20% 1fr, 1fr);
+  @include grid-stretch(2% 17% 1fr, 1fr);
   height: 100vh;
   justify-self: stretch;
   position: relative;
@@ -48,7 +48,7 @@ app-sidebar {
   transform-origin: 50%;
 
   @media screen and (max-width: $mobile-treshhold) {
-    @include absolute(85vh, 0, null, 0);
+    @include absolute(90vh, 0, null, 0);
     margin: auto;
   }
 }

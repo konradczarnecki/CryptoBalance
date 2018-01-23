@@ -9,6 +9,8 @@ import 'rxjs/add/operator/reduce';
 
 import {Coin} from '../model';
 import {ToggleTransparencyAction} from '../redux/actions';
+import {Title} from '@angular/platform-browser';
+import {CoinPricePipe} from '../service/coin-price.pipe';
 
 @Component({
   selector: 'app-total-amount',
@@ -21,7 +23,9 @@ export class TotalAmountComponent implements OnInit {
   currency: string;
   iconTransparency: boolean;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>,
+              private titleService: Title,
+              private coinPipe: CoinPricePipe) {
 
     this.total = 0;
     this.currency = 'usd';
@@ -37,6 +41,8 @@ export class TotalAmountComponent implements OnInit {
           this.total = coins
             .map(coin => coin['price_' + currency] * coin.amount)
             .reduce((sum, val) => sum + val);
+
+          this.titleService.setTitle('CB - ' + this.coinPipe.transform(this.total) + ' ' + this.currency.toUpperCase());
         }
       });
     });
