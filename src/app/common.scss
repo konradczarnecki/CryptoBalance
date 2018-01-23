@@ -2,8 +2,8 @@
 @import 'functions';
 
 $font-url: 'https://fonts.googleapis.com/css?family=';
-$font: 'Comfortaa'; //Comfortaa,
-$font2: 'Helvetica';
+$font: 'Maven Pro'; //Comfortaa,
+$font2: 'Maven Pro';
 $url1: $font-url + str-replace($font, ' ', '+');
 $url2: $font-url + str-replace($font2, ' ', '+');
 @import url($url1);

@@ -52,10 +52,10 @@ task deploy {
 
   doLast {
     ssh.run {
+
       session(remotes.droplet) {
         execute "sudo rm -rf ${deployPath}/*"
-        put from: "bundle/${project.property('bundle.name')}",
-          into: "${deployPath}/"
+        put from: "bundle/${project.property('bundle.name')}", into: "${deployPath}/"
         execute "unzip ${deployPath}/${project.property('bundle.name')} -d ${deployPath}"
       }
     }

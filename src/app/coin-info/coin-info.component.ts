@@ -29,6 +29,9 @@ export class CoinInfoComponent {
   }
 
   setAmount(value: string) {
-    if(value) this.store.dispatch(new ChangeAmountAction({coin : this.coin.id, amount : Number(value)}));
+
+    if(!/^[0-9.]+$/.test(value)) value = "0";
+
+    this.store.dispatch(new ChangeAmountAction({coin : this.coin.id, amount : Number(value)}));
   }
 }

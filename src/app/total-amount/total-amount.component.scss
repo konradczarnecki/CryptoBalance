@@ -13,9 +13,9 @@ $viewicon-size: 60px;
 h1 {
   display: inline-block;
   font-family: $font2;
-  font-size: 65px;
-  font-weight: 700;
-  color: transparentize($font-clr, 0.1);
+  font-size: 70px;
+  font-weight: 600;
+  color: transparentize($font-clr, 0.2);
 
   @media screen and (max-width: 30cm) {
     font-size: 45px;
