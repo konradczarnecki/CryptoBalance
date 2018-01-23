@@ -1,9 +1,9 @@
 import {Coin} from '../model';
 import {
   CHANGE_AMOUNT, CHANGE_CURRENCY, CHANGE_TIMEWINDOW, ChangeAmountAction, ChangeCurrencyAction, ChangeTimewindowAction, CoinAction,
-  TOGGLE_COIN, HIDE_SIDEBAR,
+  TOGGLE_COIN,
   SET_COINS,
-  TOGGLE_SIDEBAR
+  TOGGLE_SIDEBAR, ToggleTransparencyAction, TOGGLE_TRANSPARENCY
 } from './actions';
 import {Action} from '@ngrx/store';
 
@@ -14,6 +14,7 @@ export function coinReducer(state: Coin[] = initCoins(), action: CoinAction) {
   switch (action.type) {
 
     case SET_COINS:
+
       newState = <Coin[]> action.payload;
 
       newState.forEach(newCoin => {
@@ -28,19 +29,23 @@ export function coinReducer(state: Coin[] = initCoins(), action: CoinAction) {
       return newState;
 
     case TOGGLE_COIN:
+
       newState = state.slice(0);
       let coin = newState.find(coin => coin.id === action.payload);
       coin.shown = !coin.shown;
+
       localStorage.setItem('coins', JSON.stringify(newState));
       return newState;
 
     case CHANGE_AMOUNT:
+
       const changeAmountAction = <ChangeAmountAction> action;
       const coinId = changeAmountAction.payload.coin;
       const amount = changeAmountAction.payload.amount;
 
       newState = state.slice(0);
       newState.find(coin => coin.id === coinId).amount = amount;
+
       localStorage.setItem('coins', JSON.stringify(newState));
       return newState;
 
@@ -54,6 +59,7 @@ export function sidebarReducer(state: boolean = initSidebar(), action: Action) {
   switch (action.type) {
 
     case TOGGLE_SIDEBAR:
+
       localStorage.setItem('sidebar', JSON.stringify(!state));
       return !state;
 
@@ -67,6 +73,7 @@ export function currencyReducer(state: string = initCurrency(), action: ChangeCu
   switch(action.type) {
 
     case CHANGE_CURRENCY:
+
       localStorage.setItem('currency', JSON.stringify(action.payload));
       return action.payload;
 
@@ -80,8 +87,23 @@ export function timewindowReducer(state: string = initTimewindow(), action: Chan
   switch (action.type) {
 
     case CHANGE_TIMEWINDOW:
+
       localStorage.setItem('timewindow', JSON.stringify(action.payload));
       return action.payload;
+
+    default:
+      return state;
+  }
+}
+
+export function iconTransparencyReducer(state: boolean = initIconTransparency(), action: ToggleTransparencyAction) {
+
+  switch (action.type) {
+
+    case TOGGLE_TRANSPARENCY:
+
+      localStorage.setItem('transparency', JSON.stringify(!state));
+      return !state;
 
     default:
       return state;
@@ -92,7 +114,8 @@ export const rootReducer = {
   coins : coinReducer,
   sidebarExpanded : sidebarReducer,
   currency : currencyReducer,
-  timewindow : timewindowReducer
+  timewindow : timewindowReducer,
+  iconTransparency: iconTransparencyReducer
 };
 
 function initCoins(): Coin[] {
@@ -117,4 +140,10 @@ function initTimewindow(): string {
   let timewindow = JSON.parse(localStorage.getItem('timewindow'));
   if(!timewindow) timewindow = '24h';
   return timewindow;
+}
+
+function initIconTransparency(): boolean {
+  let transparent = JSON.parse(localStorage.getItem('transparency'));
+  if(transparent == null) transparent = true;
+  return transparent;
 }

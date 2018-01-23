@@ -1,20 +1,35 @@
 @import "../common";
 
+$viewicon-size: 60px;
+
 .wrapper {
   @include grid-center(1fr, 1fr);
 }
 
+#innerWrapper {
+  transform: translateX($viewicon-size / 2);
+}
+
 h1 {
+  display: inline-block;
   font-family: $font2;
   font-size: 65px;
   font-weight: 700;
   color: transparentize($font-clr, 0.1);
 
   @media screen and (max-width: 30cm) {
-    font-size: 35px;
-  }
-
-  @media screen and (max-width: $mobile-treshhold) {
     font-size: 45px;
   }
+}
+
+#transparencyToggleButton {
+  @include size(60px);
+  opacity: 0.4;
+  display: inline-block;
+  margin-left: 40px;
+}
+
+#transparencyToggleButton:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }

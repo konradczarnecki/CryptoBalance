@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {Coin} from '../model';
 import {Observable} from 'rxjs/Observable';
 import {AppState} from '../redux/state';
@@ -10,17 +10,16 @@ import {ChangeAmountAction} from '../redux/actions';
   templateUrl: './coin-info.component.html',
   styleUrls: ['./coin-info.component.scss']
 })
-export class CoinInfoComponent implements OnInit {
+export class CoinInfoComponent {
 
   @Input('coin') coin: Coin;
   currency: string;
+  iconTransparency: boolean;
 
   constructor(private store: Store<AppState> ) {
 
     store.select('currency').subscribe(currency => this.currency = currency);
-  }
-
-  ngOnInit() {
+    store.select('iconTransparency').subscribe(transparency => this.iconTransparency = transparency);
   }
 
   get coinValue(): number {

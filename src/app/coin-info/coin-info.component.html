@@ -1,17 +1,18 @@
-<div class="wrapper">
+<div class="wrapper" [ngClass]="{'untransparent' : !iconTransparency}">
 
-  <div id="coinValue">
+  <div id="coinValueBox">
 
     <div>
       <input type="text" id="amount"
-                [value]="coin.amount"
-                (input)="setAmount($event.target.value)"/>{{coin.symbol}}  &#8776;
+             [value]="coin.amount"
+             (input)="setAmount($event.target.value)"/>{{coin.symbol}}  &#8776;
     </div>
 
-    <div>{{coinValue | coinPrice}} {{currency.toUpperCase()}}</div>
+    <div id="coinValue">{{coinValue | coinPrice}} {{currency.toUpperCase()}}</div>
   </div>
 
-  <img [src]="'https://files.coinmarketcap.com/static/img/coins/32x32/' + coin.id + '.png'"/>
+  <img [src]="'https://files.coinmarketcap.com/static/img/coins/128x128/' + coin.id + '.png'"/>
   <div id="name">{{coin.name | slice:0:12}}</div>
   <div id="exchange">{{coin['price_' + currency] | coinPrice}} {{currency.toUpperCase()}} / {{coin.symbol}}</div>
+
 </div>

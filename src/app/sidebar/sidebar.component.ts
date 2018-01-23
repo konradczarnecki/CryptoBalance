@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {AppState} from '../redux/state';
-import {Store} from '@ngrx/store';
-import {Coin} from '../model';
+import { AppState } from '../redux/state';
+import { Store } from '@ngrx/store';
+import { Coin } from '../model';
 
-import {Observable} from 'rxjs/Observable';
-import {ChangeCurrencyAction, ChangeTimewindowAction, ToggleCoinAction} from '../redux/actions';
+import { Observable } from 'rxjs/Observable';
+import { ChangeCurrencyAction, ChangeTimewindowAction, ToggleCoinAction } from '../redux/actions';
 
 
 @Component({
@@ -15,38 +15,37 @@ import {ChangeCurrencyAction, ChangeTimewindowAction, ToggleCoinAction} from '..
 export class SidebarComponent implements OnInit {
 
   coins: Observable<Coin[]>;
-  _currency: string;
-  _timewindow: string;
+  currency: Observable<string>;
+  timewindow: Observable<string>;
+
+  currencies: string[];
+  timewindows: string[];
 
   constructor(private store: Store<AppState>) {
 
     this.coins = store.select('coins');
-    store.select('currency').subscribe(currency => this._currency = currency);
-    store.select('timewindow').subscribe(timewindow => this._timewindow = timewindow);
+    this.currency = store.select('currency');
+    this.timewindow = store.select('timewindow');
   }
 
-  set currency(currency) {
+  ngOnInit() {
+
+    this.currencies = ['usd', 'pln', 'btc'];
+    this.timewindows = ['1h', '24h', '7d'];
+  }
+
+  setCurrency(currency: string) {
+
     this.store.dispatch(new ChangeCurrencyAction(currency));
   }
 
-  get currency() {
-    return this._currency;
-  }
+  setTimewindow(timewindow: string) {
 
-  set timewindow(timewindow) {
     this.store.dispatch(new ChangeTimewindowAction(timewindow));
-  }
-
-  get timewindow() {
-    return this._timewindow;
   }
 
   toggleCoin(id: string) {
 
     this.store.dispatch(new ToggleCoinAction(id));
   }
-
-  ngOnInit() {
-  }
-
 }

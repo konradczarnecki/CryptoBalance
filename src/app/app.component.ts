@@ -9,7 +9,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import {mainViewAnimation, sidebarAnimation} from './animations';
 import {FetchService} from './service/fetch.service';
-import {ToggleSidebarAction} from './redux/actions';
+import {ToggleSidebarAction, ToggleTransparencyAction} from './redux/actions';
 
 @Component({
   selector: 'app-root',
@@ -28,10 +28,10 @@ export class AppComponent {
     this.shownCoins = store.select('coins')
       .map(coins => coins.filter(coin => coin.shown));
 
-    this.sidebar = store.select('sidebarExpanded').map(expanded => {
+    this.sidebar = store.select('sidebarExpanded').map(sidebarState => {
 
       const deviceSuffix = window.matchMedia('screen and (max-width: 18cm)').matches ? 'Mobile' : 'Desktop';
-      const shown = expanded ? 'shown' : 'hidden';
+      const shown = sidebarState ? 'shown' : 'hidden';
       return shown + deviceSuffix;
     });
 
@@ -45,13 +45,13 @@ export class AppComponent {
 
   private arrowRotationFromState(sidebarState: string): string {
 
-    let rotation = 180;
+    let rotation = 270;
 
     switch(sidebarState) {
-      case 'shownDesktop' : rotation = 180; break;
-      case 'hiddenDesktop' : rotation = 0; break;
-      case 'shownMobile' : rotation =  90; break;
-      case 'hiddenMobile' : rotation = 270; break;
+      case 'shownDesktop' : rotation = 270; break;
+      case 'hiddenDesktop' : rotation = 90; break;
+      case 'shownMobile' : rotation =  180; break;
+      case 'hiddenMobile' : rotation = 0; break;
     }
 
     return 'rotate(' + rotation + 'deg)';

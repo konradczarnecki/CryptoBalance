@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/reduce';
 
 import {Coin} from '../model';
+import {ToggleTransparencyAction} from '../redux/actions';
 
 @Component({
   selector: 'app-total-amount',
@@ -18,11 +19,13 @@ export class TotalAmountComponent implements OnInit {
 
   total: number;
   currency: string;
+  iconTransparency: boolean;
 
   constructor(private store: Store<AppState>) {
 
     this.total = 0;
     this.currency = 'usd';
+    store.select('iconTransparency').subscribe(transparent => this.iconTransparency = transparent);
 
     store.select('currency').subscribe(currency => {
       this.currency = currency;
@@ -37,6 +40,11 @@ export class TotalAmountComponent implements OnInit {
         }
       });
     });
+  }
+
+  toggleTransparency() {
+
+    this.store.dispatch(new ToggleTransparencyAction());
   }
 
   ngOnInit() {

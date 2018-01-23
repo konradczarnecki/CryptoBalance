@@ -6,4 +6,5 @@ export interface AppState {
   sidebarExpanded: boolean;
   currency: string;
   timewindow: string;
+  iconTransparency: boolean;
 }

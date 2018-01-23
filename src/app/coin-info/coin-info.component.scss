@@ -2,15 +2,40 @@
 
 $tile-w: 180px;
 $tile-h: 160px;
+$transparent-font: transparentize($font-clr, 0.7);
 
 .wrapper {
   @include size($tile-w, $tile-h);
-  @include grid-center(50% 20% 25%, 1fr);
+  @include grid-center(50% 20% 15%, 1fr);
   grid-template-areas: "top" "middle" "bottom";
-  font-family: 'Open Sans';
-  font-size: 22px;
+  font-family: $font;
+  font-size: 20px;
   color: $font-clr;
   cursor: default;
+}
+
+.untransparent {
+  color: $transparent-font;
+
+  img {
+    opacity: 0.8;
+  }
+
+  input {
+    color: $transparent-font;
+  }
+}
+
+.untransparent:hover {
+  color: $font-clr;
+
+  img {
+    opacity: 0.15;
+  }
+
+  input {
+    color: $font-clr;
+  }
 }
 
 input {
@@ -19,16 +44,17 @@ input {
   border: none;
   font-size: 22px;
   color: $font-clr;
-  font-family: 'Open Sans';
+  font-family: $font;
   padding-right: 10px;
   background: transparent;
+  font-weight: 600;
 }
 
 input:hover {
   cursor: pointer;
 }
 
-#coinValue {
+#coinValueBox {
   grid-area: top;
   z-index: 2;
 
@@ -37,17 +63,24 @@ input:hover {
     text-align: center;
   }
 }
+
+#coinValue {
+  font-weight: 600;
+}
+
 img {
+  @include size($tile-w * 0.35);
   grid-area: top;
-  @include size($tile-w * 0.4);
-  opacity: 0.3;
+  opacity: 0.15;
 }
 
 #name {
+  color: $font-clr;
   grid-area: middle;
 }
 
 #exchange {
   grid-area: bottom;
   font-size: 15px;
+  color: $font-clr;
 }

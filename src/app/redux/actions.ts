@@ -7,7 +7,7 @@ export const CHANGE_AMOUNT = 'CHANGE_AMOUNT';
 export const CHANGE_CURRENCY = 'CHANGE_CURRENCY';
 export const CHANGE_TIMEWINDOW = 'CHANGE_TIMEWINDOW';
 export const TOGGLE_SIDEBAR = 'SHOW_SIDEBAR';
-export const HIDE_SIDEBAR = 'HIDE_SIDEBAR';
+export const TOGGLE_TRANSPARENCY = 'TOGGLE_TRANSPARENCY';
 
 export interface CoinAction extends Action {
   payload: string | Coin[] | {coin: string, amount: number};
@@ -32,10 +32,6 @@ export class ChangeAmountAction implements CoinAction {
   constructor(public payload: {coin: string, amount: number}) {}
 }
 
-export class ToggleSidebarAction implements Action {
-  readonly type = TOGGLE_SIDEBAR;
-}
-
 export class ChangeCurrencyAction implements SettingAction {
   readonly type = CHANGE_CURRENCY;
   constructor(public payload: string) {}
@@ -45,3 +41,12 @@ export class ChangeTimewindowAction implements SettingAction {
   readonly type = CHANGE_TIMEWINDOW;
   constructor(public payload: string) {}
 }
+
+export class ToggleSidebarAction implements Action {
+  readonly type = TOGGLE_SIDEBAR;
+}
+
+export class ToggleTransparencyAction implements Action {
+  readonly type = TOGGLE_TRANSPARENCY;
+}
+

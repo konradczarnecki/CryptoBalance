@@ -18,8 +18,7 @@ export class FetchService {
 
     this.http.get<Coin[]>('https://api.coinmarketcap.com/v1/ticker/?convert=PLN&limit=100').subscribe(coins => {
 
-      const c: Coin[] = coins;
-      this.store.dispatch(new SetCoinsAction(c));
+      this.store.dispatch(new SetCoinsAction(<Coin[]> coins));
     });
   }
 

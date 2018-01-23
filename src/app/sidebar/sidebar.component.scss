@@ -15,11 +15,14 @@ $row-height: 40px;
   @include grid-format(stretch, 10px 40px);
   grid-auto-rows: $row-height;
   grid-row-gap: 10px;
-  margin-right: -15px;
   overflow-y: scroll;
 
   font-family: $font;
   color: $font-clr;
+
+  @media screen and (max-width: $mobile-treshhold) {
+    @include size100p;
+  }
 }
 
 .row {
@@ -76,6 +79,14 @@ $row-height: 40px;
 #currency, #timewindow {
   @include grid-center(1fr, 1fr 1fr 1fr);
   grid-column-gap: 5px;
+}
+
+#currency {
+  transform: translateX(5px);
+}
+
+#timewindow {
+  transform: translateX(-5px);
 }
 
 .red {

@@ -1,9 +1,11 @@
-@import "../styles/material/elevation/mdc-elevation";
+@import '../styles/material/elevation/mdc-elevation';
+@import 'functions';
 
-$font: 'Open Sans';
-$font2: 'Muli';
-$url1: 'https://fonts.googleapis.com/css?family=Open+Sans';
-$url2: 'https://fonts.googleapis.com/css?family=Muli';
+$font-url: 'https://fonts.googleapis.com/css?family=';
+$font: 'Comfortaa'; //Comfortaa,
+$font2: 'Helvetica';
+$url1: $font-url + str-replace($font, ' ', '+');
+$url2: $font-url + str-replace($font2, ' ', '+');
 @import url($url1);
 @import url($url2);
 
