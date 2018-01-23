@@ -37,7 +37,7 @@ remotes {
   droplet {
     host = '138.197.178.123'
     user = 'root'
-    identity = file(project.property('key.path'))
+//    identity = file(project.property('key.path'))
   }
 }
 

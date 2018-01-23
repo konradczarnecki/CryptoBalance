@@ -21,15 +21,21 @@ export class TotalAmountComponent implements OnInit {
 
   constructor(private store: Store<AppState>) {
 
+    this.total = 0;
+    this.currency = 'usd';
+
     store.select('currency').subscribe(currency => {
       this.currency = currency;
 
       store.select('coins').subscribe(coins => {
 
-        this.total = coins
-          .map(coin => coin['price_' + currency] * coin.amount)
-          .reduce((sum, val) => sum + val);
-      })
+        if(coins.length !== 0) {
+
+          this.total = coins
+            .map(coin => coin['price_' + currency] * coin.amount)
+            .reduce((sum, val) => sum + val);
+        }
+      });
     });
   }
 
