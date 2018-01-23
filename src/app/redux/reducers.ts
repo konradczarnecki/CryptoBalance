@@ -18,10 +18,11 @@ export function coinReducer(state: Coin[] = initCoins(), action: CoinAction) {
 
       newState.forEach(newCoin => {
         const oldCoin = state.find(coin => newCoin.id === coin.id);
-        if(oldCoin) newCoin.shown = oldCoin.shown;
-
-        if(!oldCoin || !oldCoin.amount || oldCoin.amount == 0) newCoin.amount = 0;
-        else newCoin.amount = oldCoin.amount;
+        if(oldCoin){
+          newCoin.shown = oldCoin.shown;
+          if(oldCoin.amount) newCoin.amount = oldCoin.amount;
+          else newCoin.amount = 0;
+        }
       });
       return newState;
 
