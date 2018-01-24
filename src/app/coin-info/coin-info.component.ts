@@ -13,15 +13,15 @@ import {ChangeAmountAction} from '../redux/actions';
 export class CoinInfoComponent {
 
   @Input('coin') coin: Coin;
+  iconTransparency: Observable<boolean>;
   currency: string;
-  iconTransparency: boolean;
 
   @ViewChild('amountInput') amountInput: ElementRef;
 
   constructor(private store: Store<AppState> ) {
 
     store.select('currency').subscribe(currency => this.currency = currency);
-    store.select('iconTransparency').subscribe(transparency => this.iconTransparency = transparency);
+    this.iconTransparency = store.select('iconTransparency');
   }
 
   get coinValue(): number {

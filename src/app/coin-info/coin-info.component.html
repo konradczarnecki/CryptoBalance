@@ -1,4 +1,6 @@
-<div class="wrapper" (click)="focusOnInput()" [ngClass]="{'untransparent' : !iconTransparency}">
+<div class="wrapper"
+     [ngClass]="{'untransparent' : !(iconTransparency | async)}"
+     (click)="focusOnInput()">
 
   <div id="coinValueBox">
 

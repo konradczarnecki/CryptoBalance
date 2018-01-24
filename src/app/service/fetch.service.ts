@@ -16,7 +16,7 @@ export class FetchService {
 
   fetchCoinInfos(): void {
 
-    this.http.get<Coin[]>('https://api.coinmarketcap.com/v1/ticker/?convert=PLN&limit=100').subscribe(coins => {
+    this.http.get<Coin[]>('https://api.coinmarketcap.com/v1/ticker/?convert=PLN&limit=200').subscribe(coins => {
 
       this.store.dispatch(new SetCoinsAction(<Coin[]> coins));
     });
