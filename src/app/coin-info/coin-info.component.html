@@ -1,11 +1,10 @@
-<div class="wrapper" [ngClass]="{'untransparent' : !iconTransparency}">
+<div class="wrapper" (click)="focusOnInput()" [ngClass]="{'untransparent' : !iconTransparency}">
 
   <div id="coinValueBox">
 
     <div>
-      <input type="text" id="amount"
+      <input type="text" id="amount" #amountInput
              [value]="coin.amount"
-             (click)="$event.target.value = ''"
              (input)="setAmount($event.target.value)"/>{{coin.symbol}}  &#8776;
     </div>
 

@@ -14,6 +14,10 @@ $transparent-font: transparentize($font-clr, 0.7);
   cursor: default;
 }
 
+.wrapper:hover {
+  cursor: pointer;
+}
+
 .untransparent {
   color: $transparent-font;
 

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {Coin} from '../model';
 import {Observable} from 'rxjs/Observable';
 import {AppState} from '../redux/state';
@@ -15,6 +15,8 @@ export class CoinInfoComponent {
   @Input('coin') coin: Coin;
   currency: string;
   iconTransparency: boolean;
+
+  @ViewChild('amountInput') amountInput: ElementRef;
 
   constructor(private store: Store<AppState> ) {
 
@@ -33,5 +35,11 @@ export class CoinInfoComponent {
     if(!/^[0-9.]+$/.test(value)) value = "0";
 
     this.store.dispatch(new ChangeAmountAction({coin : this.coin.id, amount : Number(value)}));
+  }
+
+  focusOnInput() {
+
+    this.amountInput.nativeElement.value = '';
+    this.amountInput.nativeElement.focus();
   }
 }
