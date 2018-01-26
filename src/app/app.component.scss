@@ -71,4 +71,38 @@ app-sidebar {
   }
 }
 
+#bottomBar {
+  @include size(100%, 70px);
+  @include absolute(null, 0, 0, 0);
+  background: white;
+  z-index: 2;
+}
+
+app-donation {
+  float: left;
+  margin: 20px;
+}
+
+#cmcLink {
+  float: right;
+  margin: 20px;
+  font-size: 22px;
+  font-family: $font;
+  opacity: 0.3;
+  text-decoration: none;
+}
+
+#cmcLink:link {
+  color: black;
+}
+
+#cmcLink:visited {
+  color: black;
+}
+
+#cmcLink:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
 

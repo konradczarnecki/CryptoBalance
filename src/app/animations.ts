@@ -20,3 +20,15 @@ export const mainViewAnimation = trigger('mainViewAnimation', [
   transition('shownMobile <=> hiddenMobile', animate('180ms cubic-bezier(.58,.7,.46,1.02)'))
 ]);
 
+export const donationExpand = trigger('donationExpand', [
+
+  state('collapsed', style({width: '*'})),
+  state('expanded', style({width: '980px'})),
+  transition('collapsed <=> expanded', animate('180ms cubic-bezier(.58,.7,.46,1.02)')),
+]);
+
+export const donationOpacity = trigger('donationOpacity', [
+  state('in', style({opacity: 0.8})),
+  transition(':enter', [style({opacity : 0}), animate('100ms linear')]),
+  transition(':leave', animate('300ms linear', style({opacity : 0})))
+]);

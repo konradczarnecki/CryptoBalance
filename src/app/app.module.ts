@@ -12,6 +12,7 @@ import {FetchService} from './service/fetch.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CoinPricePipe } from './service/coin-price.pipe';
 import {FormsModule} from '@angular/forms';
+import { DonationComponent } from './donation/donation.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {FormsModule} from '@angular/forms';
     TotalAmountComponent,
     SidebarComponent,
     CoinInfoComponent,
-    CoinPricePipe
+    CoinPricePipe,
+    DonationComponent
   ],
   imports: [
     BrowserModule,

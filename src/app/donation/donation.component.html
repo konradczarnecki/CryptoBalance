@@ -1,0 +1,14 @@
+<div class="wrapper"
+     [ngClass]="{'expanded' : classExpanded }"
+     (mouseenter)="expand()"
+     (mouseleave)="collapse()"
+     [@donationExpand]="expanded">
+
+  <span id="donate">donate</span>
+
+  <div *ngIf="accountsVisible" [@donationOpacity]>
+    <span class="address" id="btcAddress">BTC: {{btcAddress}}</span>
+    <span class="address" id="ethAddress">ETH: {{ethAddress}}</span>
+  </div>
+
+</div>

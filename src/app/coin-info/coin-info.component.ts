@@ -32,7 +32,10 @@ export class CoinInfoComponent {
 
   setAmount(value: string) {
 
-    if(!/^[0-9.]+$/.test(value)) value = "0";
+    if(!/^[0-9.]+$/.test(value)){
+      value = '0';
+      this.amountInput.nativeElement.value = '0';
+    }
 
     this.store.dispatch(new ChangeAmountAction({coin : this.coin.id, amount : Number(value)}));
   }

@@ -4,5 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  btcAddress: '1D3H1Nxw5wHoDmk47RXmzcKTdGLdsF6h2V',
+  ethAddress: 'ETH: 0xE30B0b692f8B7609e3F9DB121F73981675843b5d'
 };
