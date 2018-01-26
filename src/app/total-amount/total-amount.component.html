@@ -2,7 +2,7 @@
 
   <div id="innerWrapper">
 
-    <h1>{{total | coinPrice}} {{currency.toUpperCase()}}</h1>
+    <h1 [ngClass]="{'blur' : !iconTransparency}">{{total | coinPrice}} {{currency.toUpperCase()}}</h1>
 
     <img id="transparencyToggleButton"
          [src]="iconTransparency ? 'assets/visible.png' : 'assets/not_visible.png'"
