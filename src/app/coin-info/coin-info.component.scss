@@ -19,14 +19,14 @@ $transparent-font: transparentize($font-clr, 0.7);
 }
 
 .untransparent {
-  color: $transparent-font;
+  color: transparent;
 
   img {
     opacity: 0.8;
   }
 
   input {
-    color: $transparent-font;
+    color: transparent;
   }
 }
 
