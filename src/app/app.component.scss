@@ -16,7 +16,7 @@ $sidebar-width: 400px;
 }
 
 app-sidebar {
-  @include mdc-elevation(4);
+  @include mdc-elevation(3);
   @include size(400px, 100vh);
   z-index: 3;
 
@@ -86,7 +86,8 @@ app-donation {
 #cmcLink {
   float: right;
   margin: 20px;
-  font-size: 22px;
+  margin-top: 40px;
+  font-size: 17px;
   font-family: $font;
   opacity: 0.3;
   text-decoration: none;

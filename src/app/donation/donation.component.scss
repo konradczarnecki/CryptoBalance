@@ -2,7 +2,13 @@
 
 .wrapper {
   @include size(100px, 35px);
-  @include border(1px, $font-clr);
+  @include mdc-elevation(4);
+  @include border(1px, transparentize($font-clr, 0.6));
+  border-radius: 2px;
+}
+
+.frame {
+  @include size100p;
   @include grid-center;
   border-radius: 2px;
   background: white;
@@ -10,7 +16,7 @@
   opacity: 0.35;
 }
 
-.wrapper:hover {
+.frame:hover {
   cursor: pointer;
   opacity: 0.7;
 }
@@ -18,20 +24,16 @@
 .address {
   display: inline-block;
   opacity: 0.6;
+  align-self: stretch;
+  justify-self: stretch;
+  @include grid-center;
 }
 
 .address:hover {
   opacity: 1;
 }
 
-#ethAddress {
-  margin-left: 10px;
-}
-
-#btcAddress {
-  transform: translateX(-30px);
-}
 
 .expanded {
-  @include grid-center(1fr, 100px 1fr);
+  @include grid-center(1fr, 100px 5fr 6fr);
 }

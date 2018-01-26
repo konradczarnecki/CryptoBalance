@@ -1,14 +1,18 @@
-<div class="wrapper"
-     [ngClass]="{'expanded' : classExpanded }"
-     (mouseenter)="expand()"
-     (mouseleave)="collapse()"
-     [@donationExpand]="expanded">
+<div class="wrapper" [@donationExpand]="expanded">
 
-  <span id="donate">donate</span>
+  <div class="frame"
+       [ngClass]="{'expanded' : classExpanded }"
+       (mouseenter)="expand()"
+       (mouseleave)="collapse()"
+       [@donationExpand]="expanded">
 
-  <div *ngIf="accountsVisible" [@donationOpacity]>
-    <span class="address" id="btcAddress">BTC: {{btcAddress}}</span>
-    <span class="address" id="ethAddress">ETH: {{ethAddress}}</span>
+    <span id="donate">donate</span>
+
+    <ng-container *ngIf="accountsVisible">
+      <div class="address" id="btcAddress" [@donationOpacity]>BTC: {{btcAddress}}</div>
+      <div class="address" id="ethAddress" [@donationOpacity]>ETH: {{ethAddress}}</div>
+    </ng-container>
+
   </div>
 
 </div>

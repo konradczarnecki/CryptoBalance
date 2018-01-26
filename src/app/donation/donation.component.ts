@@ -41,9 +41,9 @@ export class DonationComponent implements OnInit {
 
   collapse() {
 
-    this.collapseTimeouts.push(window.setTimeout(() => this.accountsVisible = false, 2500));
-    this.collapseTimeouts.push(window.setTimeout(() => this.expanded = 'collapsed', 2800));
-    this.collapseTimeouts.push(window.setTimeout(() => this.classExpanded = false, 3200));
+    this.collapseTimeouts.push(window.setTimeout(() => this.accountsVisible = false, 1300));
+    this.collapseTimeouts.push(window.setTimeout(() => this.expanded = 'collapsed', 2000));
+    this.collapseTimeouts.push(window.setTimeout(() => this.classExpanded = false, 2800));
   }
 
 }

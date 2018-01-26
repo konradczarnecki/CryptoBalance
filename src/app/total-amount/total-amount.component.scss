@@ -26,6 +26,10 @@ h1 {
   }
 }
 
+h1:hover {
+  cursor: default;
+}
+
 #transparencyToggleButton {
   @include size($viewicon-size);
   opacity: 0.4;
