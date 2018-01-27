@@ -1,11 +1,16 @@
 <div class="wrapper">
 
+  <img id="sidebarToggleButton"
+       src="assets/arrow.png"
+       (click)="toggleSidebar()"
+       [ngStyle]="{transform : arrowRotation | async }"/>
+
   <div id="innerWrapper">
 
-    <h1 [ngClass]="{'blur' : !iconTransparency}">{{total | coinPrice}} {{currency.toUpperCase()}}</h1>
+    <h1 [ngClass]="{'blur' : !(iconTransparency | async)}">{{total | coinPrice}} {{currency.toUpperCase()}}</h1>
 
     <img id="transparencyToggleButton"
-         [src]="iconTransparency ? 'assets/visible.png' : 'assets/not_visible.png'"
+         [src]="(iconTransparency | async) ? 'assets/visible.png' : 'assets/not_visible.png'"
          (click)="toggleTransparency()" />
   </div>
 

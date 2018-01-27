@@ -54,14 +54,18 @@ export function coinReducer(state: Coin[] = initCoins(), action: CoinAction) {
   }
 }
 
-export function sidebarReducer(state: boolean = initSidebar(), action: Action) {
+export function sidebarReducer(state: string = initSidebar(), action: Action) {
 
   switch (action.type) {
 
     case TOGGLE_SIDEBAR:
 
-      localStorage.setItem('sidebar', JSON.stringify(!state));
-      return !state;
+      const deviceSuffix = window.matchMedia('screen and (max-width: 20cm)').matches ? 'Mobile' : 'Desktop';
+      const shown = state.indexOf('shown') == -1 ? 'shown' : 'hidden';
+      const newState =  shown + deviceSuffix;
+
+      localStorage.setItem('sidebar', JSON.stringify(newState));
+      return newState;
 
     default:
       return state;
@@ -112,7 +116,7 @@ export function iconTransparencyReducer(state: boolean = initIconTransparency(),
 
 export const rootReducer = {
   coins : coinReducer,
-  sidebarExpanded : sidebarReducer,
+  sidebarState : sidebarReducer,
   currency : currencyReducer,
   timewindow : timewindowReducer,
   iconTransparency: iconTransparencyReducer
@@ -124,9 +128,9 @@ function initCoins(): Coin[] {
   return coins;
 }
 
-function initSidebar(): boolean {
+function initSidebar(): string {
   let sidebarOpen = JSON.parse(localStorage.getItem('sidebar'));
-  if(sidebarOpen == null) sidebarOpen = true;
+  if(sidebarOpen == null) sidebarOpen = 'shown';
   return sidebarOpen;
 }
 

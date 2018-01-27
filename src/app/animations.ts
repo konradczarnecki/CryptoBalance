@@ -23,7 +23,7 @@ export const mainViewAnimation = trigger('mainViewAnimation', [
 export const donationExpand = trigger('donationExpand', [
 
   state('collapsed', style({width: '*'})),
-  state('expanded', style({width: '960px'})),
+  state('expanded', style({width: '980px'})),
   transition('collapsed <=> expanded', animate('180ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
 ]);
 

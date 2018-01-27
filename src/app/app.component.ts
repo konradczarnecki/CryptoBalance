@@ -21,40 +21,13 @@ export class AppComponent {
 
   shownCoins: Observable<Coin[]>;
   sidebar: Observable<string>;
-  arrowRotation: Observable<string>;
 
   constructor(private store: Store<AppState>, private fetchService: FetchService) {
 
     this.shownCoins = store.select('coins')
       .map(coins => coins.filter(coin => coin.shown));
 
-    this.sidebar = store.select('sidebarExpanded').map(sidebarState => {
-
-      const deviceSuffix = window.matchMedia('screen and (max-width: 20cm)').matches ? 'Mobile' : 'Desktop';
-      const shown = sidebarState ? 'shown' : 'hidden';
-      return shown + deviceSuffix;
-    });
-
-    this.arrowRotation = this.sidebar.map(sidebar => this.arrowRotationFromState(sidebar));
-  }
-
-  toggleSidebar() {
-
-    this.store.dispatch(new ToggleSidebarAction());
-  }
-
-  private arrowRotationFromState(sidebarState: string): string {
-
-    let rotation = 270;
-
-    switch(sidebarState) {
-      case 'shownDesktop' : rotation = 270; break;
-      case 'hiddenDesktop' : rotation = 90; break;
-      case 'shownMobile' : rotation =  180; break;
-      case 'hiddenMobile' : rotation = 0; break;
-    }
-
-    return 'rotate(' + rotation + 'deg)';
+    this.sidebar = store.select('sidebarState');
   }
 
   @HostListener('window:resize')

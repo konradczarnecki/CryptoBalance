@@ -10,19 +10,11 @@
       <app-coin-info *ngFor="let coin of shownCoins | async" [coin]="coin"></app-coin-info>
     </div>
 
-    <img id="sidebarToggleButton"
-         src="assets/arrow.png"
-         (click)="toggleSidebar()"
-         [ngStyle]="{transform : arrowRotation | async }"/>
-
     <div id="bottomBar">
       <app-donation></app-donation>
       <a id="cmcLink" target="_blank" href="http://coinmarketcap.com">powered by <b>coinmarketcap.com</b></a>
     </div>
 
-
   </div>
 
 </div>
-
-

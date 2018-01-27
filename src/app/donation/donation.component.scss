@@ -33,7 +33,6 @@
   opacity: 1;
 }
 
-
 .expanded {
-  @include grid-center(1fr, 100px 5fr 6fr);
+  @include grid-center(1fr, 100px 4fr 5fr);
 }

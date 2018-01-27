@@ -1,17 +1,39 @@
 @import "../common";
 
-$viewicon-size: 60px;
+$viewicon-size: 65px;
+$viewicon-margin: 60px;
+$margin: 100px;
 
 .wrapper {
   @include grid-center(1fr, 1fr);
+  position: relative;
 }
 
 #innerWrapper {
-  transform: translateX($viewicon-size / 2);
+  transform: translateX(($viewicon-size + $viewicon-margin / 2) / 2);
 
   @media screen and (max-width: 20cm) {
-    transform: translateX($viewicon-size / 5);
+    transform: translateX(($viewicon-size+ $viewicon-margin / 2) / 5);
   }
+}
+
+#sidebarToggleButton {
+  @include size(60px);
+  @include absolute(0, null, 0, 20px);
+  margin: auto;
+  z-index: 5;
+  opacity: 0.15;
+  transform-origin: 50%;
+  @include border;
+
+  @media screen and (max-width: 30cm) {
+    @include size(35px);
+  }
+}
+
+#sidebarToggleButton:hover {
+  opacity: 0.4;
+  cursor: pointer;
 }
 
 h1 {
@@ -32,11 +54,11 @@ h1:hover {
 
 #transparencyToggleButton {
   @include size($viewicon-size);
-  opacity: 0.4;
+  margin-left: $viewicon-margin;
+  opacity: 0.3;
   display: inline-block;
-  margin-left: 40px;
 
-  @media screen and (max-width: $mobile-treshhold) {
+  @media screen and (max-width: 30cm) {
     @include size($viewicon-size / 2.5);
     margin-left: 15px;
   }

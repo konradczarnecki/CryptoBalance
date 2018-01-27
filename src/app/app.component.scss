@@ -21,9 +21,11 @@ app-sidebar {
   z-index: 3;
 
   @media screen and (max-width: $mobile-treshhold) {
-    width: 94vw;
-    margin-top: 25px;
+    width: 99vw;
+    height: 80vh;
     grid-area: whole;
+    align-self: end;
+
   }
 }
 
@@ -37,26 +39,6 @@ app-sidebar {
     grid-area: whole;
     position: static;
   }
-}
-
-#sidebarToggleButton {
-  @include size(50px);
-  @include absolute(30px, null, null, 30px);
-  z-index: 5;
-  opacity: 0.15;
-  font-size: 60px;
-  text-align: center;
-  transform-origin: 50%;
-
-  @media screen and (max-width: $mobile-treshhold) {
-    @include size(35px);
-    @include absolute(5px, null, null, 10px);
-  }
-}
-
-#sidebarToggleButton:hover {
-  opacity: 0.4;
-  cursor: pointer;
 }
 
 #coinInfos {
@@ -76,6 +58,10 @@ app-sidebar {
   @include absolute(null, 0, 0, 0);
   background: white;
   z-index: 2;
+
+  @media screen and (max-width: $mobile-treshhold) {
+    display: none;
+  }
 }
 
 app-donation {
