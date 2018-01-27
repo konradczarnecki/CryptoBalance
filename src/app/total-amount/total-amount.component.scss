@@ -1,33 +1,24 @@
 @import "../common";
 
-$viewicon-size: 65px;
-$viewicon-margin: 60px;
-$margin: 100px;
+$icon-size: 65px;
+$margin: 30px;
 
 .wrapper {
   @include grid-center(1fr, 1fr);
   position: relative;
 }
 
-#innerWrapper {
-  transform: translateX(($viewicon-size + $viewicon-margin / 2) / 2);
-
-  @media screen and (max-width: 20cm) {
-    transform: translateX(($viewicon-size+ $viewicon-margin / 2) / 5);
-  }
-}
-
 #sidebarToggleButton {
-  @include size(60px);
-  @include absolute(0, null, 0, 20px);
+  @include size($icon-size);
+  @include absolute(0, null, 0, $margin);
   margin: auto;
   z-index: 5;
   opacity: 0.15;
   transform-origin: 50%;
-  @include border;
 
   @media screen and (max-width: 30cm) {
-    @include size(35px);
+    @include size($icon-size / 3);
+    @include absolute(0, null, 0, $margin / 2);
   }
 }
 
@@ -42,6 +33,7 @@ h1 {
   font-size: 70px;
   font-weight: 500;
   color: transparentize($font-clr, 0.2);
+  transition: 1s;
 
   @media screen and (max-width: 30cm) {
     font-size: 45px;
@@ -53,14 +45,15 @@ h1:hover {
 }
 
 #transparencyToggleButton {
-  @include size($viewicon-size);
-  margin-left: $viewicon-margin;
+  @include size($icon-size*1.3);
+  @include absolute(0, $margin, 0, null);
+  margin: auto;
   opacity: 0.3;
   display: inline-block;
 
   @media screen and (max-width: 30cm) {
-    @include size($viewicon-size / 2.5);
-    margin-left: 15px;
+    @include size($icon-size * 1.3 / 3);
+    @include absolute(0, $margin / 2, 0, null);
   }
 }
 
@@ -71,5 +64,6 @@ h1:hover {
 
 .blur {
   color: transparent;
-  text-shadow: 0 0 25px rgba(0,0,0,0.6);
+  text-shadow: 0 0 35px rgba(0,0,0,0.7);
+  transition: 1s;
 }

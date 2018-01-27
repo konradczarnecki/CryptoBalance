@@ -12,6 +12,7 @@ $transparent-font: transparentize($font-clr, 0.7);
   font-size: 20px;
   color: $font-clr;
   cursor: default;
+  transition: 1s;
 }
 
 .wrapper:hover {
@@ -20,6 +21,7 @@ $transparent-font: transparentize($font-clr, 0.7);
 
 .untransparent {
   color: transparent;
+  transition: 1s;
 
   img {
     opacity: 0.8;
@@ -32,6 +34,7 @@ $transparent-font: transparentize($font-clr, 0.7);
 
 .untransparent:hover {
   color: $font-clr;
+  transition: 0.3s;
 
   img {
     opacity: 0.15;
@@ -52,6 +55,7 @@ input {
   padding-right: 6px;
   background: transparent;
   font-weight: 600;
+  transition: 1s;
 }
 
 input:hover {
@@ -70,12 +74,14 @@ input:hover {
 
 #coinValue {
   font-weight: 600;
+  transition: 1s;
 }
 
 img {
   @include size($tile-w * 0.35);
   grid-area: top;
   opacity: 0.15;
+  transition: 1s;
 }
 
 #name {

@@ -6,8 +6,8 @@ export const sidebarAnimation = trigger('sidebarAnimation', [
   state('shownMobile', style({transform : 'translate(0, 0)'})),
   state('hiddenDesktop', style({transform : 'translate(-100%, 0)'})),
   state('hiddenMobile', style({transform : 'translate(0, 100%)'})),
-  transition('shownDesktop <=> hiddenDesktop', animate('100ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-  transition('shownMobile <=> hiddenMobile', animate('120ms cubic-bezier(.58,.7,.46,1.02)'))
+  transition('shownDesktop <=> hiddenDesktop', animate('180ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+  transition('shownMobile <=> hiddenMobile', animate('180ms cubic-bezier(0.4, 0.0, 0.2, 1)'))
 ]);
 
 export const mainViewAnimation = trigger('mainViewAnimation', [
