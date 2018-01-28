@@ -6,6 +6,8 @@ $margin: 30px;
 .wrapper {
   @include size100p;
   @include grid-center(1fr, $icon-size + $margin $icon-size + $margin 1fr);
+  overflow: hidden;
+
 
   @media screen and (max-width: $mobile-treshhold) {
     @include grid-center(1fr, $icon-size + $margin 1fr $icon-size + $margin );
@@ -17,7 +19,7 @@ $margin: 30px;
   grid-column: 1;
   grid-row: 1;
   z-index: 5;
-  opacity: 0.15;
+  opacity: 0.2;
   transform-origin: 50%;
 
   @media screen and (max-width: $mobile-treshhold) {
@@ -28,7 +30,7 @@ $margin: 30px;
 }
 
 #sidebarToggleButton:hover {
-  opacity: 0.4;
+  opacity: 0.5;
   cursor: pointer;
 }
 
@@ -55,7 +57,8 @@ $margin: 30px;
   grid-column: 2;
   grid-row: 1;
   margin: auto;
-  opacity: 0.3;
+  opacity: 0.2;
+  z-index: 5;
 
   @media screen and (max-width: $mobile-treshhold) {
     @include size($icon-size * 1.3 / 3);
@@ -66,10 +69,15 @@ $margin: 30px;
 
 #transparencyToggleButton:hover {
   cursor: pointer;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
-.blur {
-  text-shadow: 0 0 35px rgba(0,0,0,0.7);
-  transition: 1s;
+#coverWrapper {
+  grid-column: 1 / 4;
+  grid-row: 1;
+  @include grid-center;
+}
+
+app-cover {
+  @include size(60vw, 110px);
 }

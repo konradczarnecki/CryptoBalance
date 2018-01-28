@@ -32,3 +32,9 @@ export const donationOpacity = trigger('donationOpacity', [
   transition(':enter', [style({opacity : 0}), animate('150ms linear')]),
   transition(':leave', animate('300ms linear', style({opacity : 0})))
 ]);
+
+export const coverAnimation = trigger('coverAnimation', [
+  state('in', style({opacity: 1, width: '*'})),
+  transition(':enter', [style({opacity : 0, width: 0}), animate('500ms linear')]),
+  transition(':leave', animate('1000ms linear', style({opacity : 0, width: 1})))
+]);

@@ -1,0 +1,12 @@
+@import "../common";
+
+.wrapper {
+  @include size100p;
+  background: linear-gradient(to right, white, #e6e6e6, white);
+  filter: blur(12px);
+  z-index: 4;
+
+  @media screen and (max-width: $mobile-treshhold) {
+    @include size(100vw, 80px);
+  }
+}

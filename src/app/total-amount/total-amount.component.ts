@@ -11,11 +11,13 @@ import {Coin} from '../model';
 import {ToggleSidebarAction, ToggleTransparencyAction} from '../redux/actions';
 import {Title} from '@angular/platform-browser';
 import {CoinPricePipe} from '../service/coin-price.pipe';
+import {coverAnimation} from "../animations";
 
 @Component({
   selector: 'app-total-amount',
   templateUrl: './total-amount.component.html',
-  styleUrls: ['./total-amount.component.scss']
+  styleUrls: ['./total-amount.component.scss'],
+  animations : [coverAnimation]
 })
 export class TotalAmountComponent {
 

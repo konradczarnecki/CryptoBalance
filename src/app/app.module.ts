@@ -13,6 +13,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CoinPricePipe } from './service/coin-price.pipe';
 import {FormsModule} from '@angular/forms';
 import { DonationComponent } from './donation/donation.component';
+import { CoverComponent } from './cover/cover.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { DonationComponent } from './donation/donation.component';
     SidebarComponent,
     CoinInfoComponent,
     CoinPricePipe,
-    DonationComponent
+    DonationComponent,
+    CoverComponent
   ],
   imports: [
     BrowserModule,
