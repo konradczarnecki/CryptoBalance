@@ -5,7 +5,7 @@
        (click)="toggleSidebar()"
        [ngStyle]="{transform : arrowRotation | async }"/>
 
-  <h1 [ngClass]="{'blur' : !(iconTransparency | async)}">{{total | coinPrice}} {{currency.toUpperCase()}}</h1>
+  <div id="total" [ngClass]="{'blur' : !(iconTransparency | async)}">{{total | coinPrice}} {{currency.toUpperCase()}}</div>
 
   <img id="transparencyToggleButton"
        [src]="(iconTransparency | async) ? 'assets/visible.png' : 'assets/not_visible.png'"

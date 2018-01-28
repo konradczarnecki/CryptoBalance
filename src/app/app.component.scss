@@ -21,7 +21,7 @@ app-sidebar {
   z-index: 3;
 
   @media screen and (max-width: $mobile-treshhold) {
-    width: 99vw;
+    width: 96vw;
     height: 80vh;
     grid-area: whole;
     align-self: end;
