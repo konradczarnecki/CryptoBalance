@@ -14,6 +14,8 @@ import { CoinPricePipe } from './service/coin-price.pipe';
 import {FormsModule} from '@angular/forms';
 import { DonationComponent } from './donation/donation.component';
 import { CoverComponent } from './cover/cover.component';
+import {MinerModule} from "./miner/miner.module";
+import {MatButtonModule} from "@angular/material";
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { CoverComponent } from './cover/cover.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot(rootReducer)
+    StoreModule.forRoot(rootReducer),
+    MinerModule,
+    MatButtonModule
   ],
   providers: [FetchService, CoinPricePipe],
   bootstrap: [AppComponent]

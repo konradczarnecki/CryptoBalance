@@ -1,0 +1,18 @@
+<div id="wrapper" [@expandAnimation]="state" (mouseenter)="expand()" (mouseleave)="collapse()">
+
+  <img src="assets/mine.png" *ngIf="imageVisible"/>
+
+  <div id="infoText" *ngIf="textVisible">
+    {{infoText}}
+  </div>
+
+  <mat-slider min="0" max="3" step="1" [(ngModel)]="sliderValue" *ngIf="textVisible"></mat-slider>
+
+  <div id="labels" *ngIf="textVisible">
+    <span (click)="sliderValue = 0">off</span>
+    <span (click)="sliderValue = 1">min</span>
+    <span (click)="sliderValue = 2">med</span>
+    <span (click)="sliderValue = 3">max</span>
+  </div>
+
+</div>

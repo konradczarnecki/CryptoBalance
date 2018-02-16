@@ -1,0 +1,42 @@
+@import "../../common";
+
+$width: 260px;
+$height: 140px;
+
+#wrapper {
+  @include size($width, $height);
+  @include mdc-elevation(4);
+  @include grid-center(60% 20% 20%, 1fr);
+  @include border(1px, transparentize($font-clr, 0.6));
+  border-radius: 2px;
+  padding: 10px;
+  font-family: $font;
+  color: $font-clr;
+  position: relative;
+  cursor: pointer;
+}
+
+#infoText {
+  width: $width * 0.9;
+  text-align: justify;
+  text-justify: inter-word;
+  font-size: 12px;
+  cursor: default;
+}
+
+mat-slider {
+  width: $width * 0.8;
+}
+
+#labels {
+  width: $width;
+  @include grid-center(1fr, repeat(4, 1fr))
+}
+
+img {
+  @include absolute(null, null, 5px, 5px);
+  @include size(26px);
+  opacity: 0.4;
+}
+
+

