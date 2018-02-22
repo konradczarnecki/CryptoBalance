@@ -2,7 +2,7 @@
 
 .wrapper {
   @include size(100px, 35px);
-  @include mdc-elevation(4);
+  @include mdc-elevation(2);
   @include border(1px, transparentize($font-clr, 0.6));
   border-radius: 2px;
 }

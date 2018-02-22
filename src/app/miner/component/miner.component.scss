@@ -5,7 +5,7 @@ $height: 140px;
 
 #wrapper {
   @include size($width, $height);
-  @include mdc-elevation(4);
+  @include mdc-elevation(2);
   @include grid-center(60% 20% 20%, 1fr);
   @include border(1px, transparentize($font-clr, 0.6));
   border-radius: 2px;
