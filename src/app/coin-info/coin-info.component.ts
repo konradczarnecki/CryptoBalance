@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {AppState} from '../redux/state';
 import {Store} from '@ngrx/store';
 import {ChangeAmountAction} from '../redux/actions';
+import {logos} from "../logo-map";
 
 @Component({
   selector: 'app-coin-info',
@@ -15,6 +16,7 @@ export class CoinInfoComponent {
   @Input('coin') coin: Coin;
   iconTransparency: Observable<boolean>;
   currency: string;
+  logosMap;
 
   @ViewChild('amountInput') amountInput: ElementRef;
 
@@ -22,6 +24,7 @@ export class CoinInfoComponent {
 
     store.select('currency').subscribe(currency => this.currency = currency);
     this.iconTransparency = store.select('iconTransparency');
+    this.logosMap = logos;
   }
 
   get coinValue(): number {

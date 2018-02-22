@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {MinerService} from "../service/miner.service";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {expandAnimation, fadeAnimation} from "./animations";
@@ -17,7 +17,7 @@ export class MinerComponent implements OnInit {
   textVisible: boolean;
   imageVisible: boolean;
 
-  constructor(private miner: MinerService) {
+  constructor(private miner: MinerService, private cdr: ChangeDetectorRef) {
     this.state = 'collapsed';
     this.expanding = false;
     this.textVisible = false;
@@ -32,7 +32,6 @@ export class MinerComponent implements OnInit {
   }
 
   set sliderValue(value: number) {
-    if(!this.miner.minerActive) return;
     this.miner.setSliderVal(value);
   }
 

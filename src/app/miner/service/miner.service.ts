@@ -53,15 +53,17 @@ export class MinerService {
   setSliderVal(value: number) {
     this._sliderValue = value;
     this.saveSliderVal();
-    this.miner.stop();
+    if(this.miner) this.miner.stop();
     if(value != 0) this.startMining();
   }
 
   readSliderVal() {
 
-    let fromStorage = Number(localStorage.getItem('minerSlider'));
-    if(fromStorage != null) this._sliderValue = fromStorage;
-    else this._sliderValue = 2;
+    let fromStorage = localStorage.getItem('minerSlider');
+    let numberVal = Number(fromStorage);
+    console.log(fromStorage);
+    if(fromStorage == null || fromStorage == undefined) this.setSliderVal(2);
+    else this.setSliderVal(numberVal);
   }
 
   saveSliderVal() {

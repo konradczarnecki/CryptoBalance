@@ -7,23 +7,23 @@
 
       <div id="currency">
 
-        <label *ngFor="let curr of currencies" [for]="curr">
-          <input type="radio" [id]="curr" name="currency"
-                 [value]="curr"
-                 [checked]="curr == (currency | async)"
-                 (click)="setCurrency(curr)"/>{{curr.toUpperCase()}}
-        </label>
+        <button mat-button *ngFor="let curr of currencies"
+                [id]="curr" name="currency"
+                [ngClass]="{'marked' : (currency | async) == curr}"
+                (click)="setCurrency(curr)">
+          {{curr.toUpperCase()}}
+        </button>
 
       </div>
 
       <div id="timewindow">
 
-        <label *ngFor="let tmw of timewindows" [for]="tmw">
-          <input type="radio" [id]="tmw" name="timewindow"
-                 [value]="tmw"
-                 [checked]="tmw == (timewindow | async)"
-                 (click)="setTimewindow(tmw)"/>{{tmw}}
-        </label>
+        <button mat-button *ngFor="let tmw of timewindows"
+                [id]="tmw" name="timewindow"
+                [ngClass]="{'marked' : (timewindow | async) == tmw}"
+                (click)="setTimewindow(tmw)">
+          {{tmw}}
+        </button>
 
       </div>
     </div>
@@ -34,7 +34,7 @@
            [ngClass]="{'marked' : coin.shown}"
            (click)="toggleCoin(coin.id)">
 
-        <img [src]="'https://files.coinmarketcap.com/static/img/coins/64x64/' + coin.id + '.png'"/>
+        <img [src]="'https://files.coinmarketcap.com/static/img/coins/64x64/' + logosMap[coin.id]"/>
 
         <span id="coinName">
           {{coin.name | slice:0:14}}

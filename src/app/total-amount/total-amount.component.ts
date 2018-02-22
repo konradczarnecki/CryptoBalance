@@ -73,7 +73,6 @@ export class TotalAmountComponent {
       case 'shownMobile' : rotation =  180; break;
       case 'hiddenMobile' : rotation = 0; break;
     }
-    console.log(rotation);
 
     return 'rotate(' + rotation + 'deg)';
   }

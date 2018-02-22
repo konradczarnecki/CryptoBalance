@@ -13,7 +13,7 @@
     <div id="coinValue">{{coinValue | coinPrice}} {{currency.toUpperCase()}}</div>
   </div>
 
-  <img [src]="'https://files.coinmarketcap.com/static/img/coins/128x128/' + coin.id + '.png'"/>
+  <img [src]="'https://files.coinmarketcap.com/static/img/coins/128x128/' + logosMap[coin.id]"/>
   <div id="name">{{coin.name | slice:0:12}}</div>
   <div id="exchange">{{coin['price_' + currency] | coinPrice}} {{currency.toUpperCase()}} / {{coin.symbol}}</div>
 

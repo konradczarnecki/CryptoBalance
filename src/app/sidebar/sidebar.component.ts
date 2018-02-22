@@ -5,6 +5,7 @@ import { Coin } from '../model';
 
 import { Observable } from 'rxjs/Observable';
 import { ChangeCurrencyAction, ChangeTimewindowAction, ToggleCoinAction } from '../redux/actions';
+import {logos} from "../logo-map";
 
 
 @Component({
@@ -20,12 +21,14 @@ export class SidebarComponent implements OnInit {
 
   currencies: string[];
   timewindows: string[];
+  logosMap;
 
   constructor(private store: Store<AppState>) {
 
     this.coins = store.select('coins');
     this.currency = store.select('currency');
     this.timewindow = store.select('timewindow');
+    this.logosMap = logos;
   }
 
   ngOnInit() {
