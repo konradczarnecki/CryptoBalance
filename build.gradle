@@ -35,7 +35,7 @@ task pack(type: Zip) {
 
 task clean(type: Delete) {
   group 'app'
-  delete file('bundle'), file('dist');
+  delete file('bundle'), file('dist')
 }
 
 remotes {

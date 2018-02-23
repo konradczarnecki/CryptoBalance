@@ -78,6 +78,7 @@ $row-height: 40px;
 
 #currency, #timewindow {
   @include grid-center(1fr, 1fr 1fr 1fr);
+  grid-column-gap: 5px;
 }
 
 #currency {
@@ -98,7 +99,8 @@ $row-height: 40px;
 
 button {
   min-width: 0 !important;
-  width: 60px;
+  padding: 0 !important;
+  width: 50px;
 }
 
 
